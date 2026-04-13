@@ -109,10 +109,15 @@
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
+            opacity: 0;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease;
         }
         .faq-answer.open {
             max-height: 500px;
+            opacity: 1;
+            padding-bottom: 1.25rem !important;
         }
 
         /* Testimonial cards */
@@ -314,7 +319,7 @@
     <section class="bg-gray-50 border-y border-gray-100 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">As Featured In</p>
-            <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-40 grayscale">
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-8 lg:gap-x-16 opacity-40 grayscale">
                 <!-- Placeholder media logos (replace with real logos) -->
                 <div class="flex items-center gap-2 text-gray-500">
                     <i class="fas fa-newspaper text-2xl"></i>
@@ -362,8 +367,8 @@
                             <p class="text-white/70 text-sm font-medium">Founder, EverGuard Financial</p>
                         </div>
                     </div>
-                    <!-- Floating credential badge -->
-                    <div class="absolute -bottom-4 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                    <!-- Floating credential badge (hidden on mobile to avoid overlap with photo text) -->
+                    <div class="hidden lg:block absolute -bottom-4 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
                         <div class="flex items-center gap-3">
                             <div class="w-12 h-12 bg-brand-500 rounded-xl flex items-center justify-center">
                                 <i class="fas fa-award text-white text-xl"></i>
@@ -705,14 +710,14 @@
 
             <!-- FAQ Tabs -->
             <div class="flex justify-center gap-2 mb-10 reveal">
-                <button class="tab-btn active font-semibold text-sm px-5 py-2.5 rounded-lg border-b-2 border-brand-500 bg-white shadow-sm transition-all" data-tab="life">
-                    <i class="fas fa-heart text-xs mr-1.5"></i>Life Insurance
+                <button class="tab-btn active font-semibold text-xs sm:text-sm px-3 sm:px-5 py-2.5 rounded-lg border-b-2 border-brand-500 bg-white shadow-sm transition-all whitespace-nowrap" data-tab="life">
+                    <i class="fas fa-heart text-xs mr-1 sm:mr-1.5"></i><span class="hidden sm:inline">Life Insurance</span><span class="sm:hidden">Life</span>
                 </button>
-                <button class="tab-btn font-semibold text-sm px-5 py-2.5 rounded-lg border-b-2 border-transparent text-gray-500 hover:text-brand-500 bg-white shadow-sm transition-all" data-tab="health">
-                    <i class="fas fa-plus-circle text-xs mr-1.5"></i>Health Insurance
+                <button class="tab-btn font-semibold text-xs sm:text-sm px-3 sm:px-5 py-2.5 rounded-lg border-b-2 border-transparent text-gray-500 hover:text-brand-500 bg-white shadow-sm transition-all whitespace-nowrap" data-tab="health">
+                    <i class="fas fa-plus-circle text-xs mr-1 sm:mr-1.5"></i><span class="hidden sm:inline">Health Insurance</span><span class="sm:hidden">Health</span>
                 </button>
-                <button class="tab-btn font-semibold text-sm px-5 py-2.5 rounded-lg border-b-2 border-transparent text-gray-500 hover:text-brand-500 bg-white shadow-sm transition-all" data-tab="annuities">
-                    <i class="fas fa-piggy-bank text-xs mr-1.5"></i>Annuities
+                <button class="tab-btn font-semibold text-xs sm:text-sm px-3 sm:px-5 py-2.5 rounded-lg border-b-2 border-transparent text-gray-500 hover:text-brand-500 bg-white shadow-sm transition-all whitespace-nowrap" data-tab="annuities">
+                    <i class="fas fa-piggy-bank text-xs mr-1 sm:mr-1.5"></i>Annuities
                 </button>
             </div>
 
@@ -933,11 +938,11 @@
                             </div>
                             <span class="font-medium">(407) 883-7020</span>
                         </a>
-                        <a href="mailto:zachyounginsurancebroker@gmail.com" class="flex items-center gap-3 text-gray-600 hover:text-brand-500 transition-colors">
-                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center">
+                        <a href="mailto:zachyounginsurancebroker@gmail.com" class="flex items-center gap-3 text-gray-600 hover:text-brand-500 transition-colors min-w-0">
+                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-envelope text-brand-500 text-sm"></i>
                             </div>
-                            <span class="font-medium">zachyounginsurancebroker@gmail.com</span>
+                            <span class="font-medium text-sm sm:text-base break-all">zachyounginsurancebroker@gmail.com</span>
                         </a>
                     </div>
                 </div>
@@ -979,14 +984,14 @@
             </p>
 
             <!-- Referral Link Copy -->
-            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-lg mx-auto mb-8 border border-white/10">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 max-w-lg mx-auto mb-8 border border-white/10">
                 <p class="text-white/70 text-sm font-medium mb-3">Your Personal Referral Link:</p>
-                <div class="flex items-center gap-2">
-                    <input id="referral-link" type="text" value="https://everguardfinancial.com/?ref=client" readonly
-                        class="flex-1 bg-white/10 text-white font-mono text-sm px-4 py-3 rounded-xl border border-white/10 focus:outline-none">
-                    <button id="copy-link-btn" onclick="copyReferralLink()" class="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-5 py-3 rounded-xl transition-all flex items-center gap-2 whitespace-nowrap">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                    <input id="referral-link" type="text" value="https://everguard-financial.vercel.app/?ref=client" readonly
+                        class="flex-1 min-w-0 bg-white/10 text-white font-mono text-xs sm:text-sm px-4 py-3 rounded-xl border border-white/10 focus:outline-none truncate">
+                    <button id="copy-link-btn" onclick="copyReferralLink()" class="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-5 py-3 rounded-xl transition-all flex items-center justify-center gap-2 whitespace-nowrap">
                         <i class="fas fa-copy text-sm"></i>
-                        <span>Copy</span>
+                        <span>Copy Link</span>
                     </button>
                 </div>
                 <p id="copy-feedback" class="text-success text-xs mt-2 opacity-0 transition-opacity">Link copied to clipboard!</p>
@@ -1085,8 +1090,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:zachyounginsurancebroker@gmail.com" class="text-blue-200/50 hover:text-white text-sm transition-colors flex items-center gap-2">
-                                <i class="fas fa-envelope text-xs"></i> zachyounginsurancebroker@gmail.com
+                            <a href="mailto:zachyounginsurancebroker@gmail.com" class="text-blue-200/50 hover:text-white text-xs sm:text-sm transition-colors flex items-center gap-2 break-all">
+                                <i class="fas fa-envelope text-xs flex-shrink-0"></i> <span>zachyounginsurancebroker@gmail.com</span>
                             </a>
                         </li>
                     </ul>
@@ -1122,10 +1127,10 @@
     <!-- ============================================ -->
     <!-- FLOATING MOBILE CTA                          -->
     <!-- ============================================ -->
-    <div id="floating-cta" class="floating-cta hidden fixed bottom-6 right-6 z-40 lg:hidden">
-        <a href="#book" class="flex items-center gap-2 bg-brand-500 text-white font-bold px-5 py-3.5 rounded-full shadow-xl shadow-brand-500/30 hover:bg-brand-600 transition-all">
-            <i class="fas fa-calendar-check"></i>
-            Book a Call
+    <div id="floating-cta" class="floating-cta hidden fixed bottom-4 right-4 z-40 lg:hidden">
+        <a href="#book" class="flex items-center gap-2 bg-brand-500 text-white font-semibold text-sm px-4 py-3 rounded-full shadow-lg shadow-brand-500/30 hover:bg-brand-600 transition-all">
+            <i class="fas fa-calendar-check text-sm"></i>
+            <span>Book</span>
         </a>
     </div>
 
