@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverGuard Financial | Zach Young - Licensed Life, Health & Annuity Specialist</title>
+    <meta name="description" content="EverGuard Financial - Trusted life insurance, health insurance, and annuity solutions. Licensed specialist Zach Young helps protect what matters most to your family.">
+
+    <!-- Open Graph for link sharing / referrals -->
+    <meta property="og:title" content="EverGuard Financial | Protecting What Matters Most">
+    <meta property="og:description" content="Licensed Life, Health & Annuity Specialist - Book a free consultation with Zach Young today.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://everguardfinancial.com">
+    <meta property="og:image" content="https://everguardfinancial.com/og-image.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#1a73e8',
+                            600: '#1557b0',
+                            700: '#1e3a5f',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        gold: '#d4a853',
+                        'gold-light': '#f0dca0',
+                        success: '#16a34a',
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
+
+        /* Smooth scroll-reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered children */
+        .reveal-child {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal-child.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero gradient overlay */
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a73e8 100%);
+        }
+
+        /* Floating shield animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse for CTA */
+        @keyframes subtle-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(26, 115, 232, 0); }
+        }
+        .pulse-cta {
+            animation: subtle-pulse 2.5s ease-in-out infinite;
+        }
+
+        /* Star rating */
+        .stars { color: #f59e0b; }
+
+        /* FAQ accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        /* Testimonial cards */
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Service cards */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Copy success animation */
+        @keyframes copy-success {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .copy-success {
+            animation: copy-success 0.3s ease;
+        }
+
+        /* Mobile floating CTA */
+        .floating-cta {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .floating-cta.hidden {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        /* Tab active state */
+        .tab-btn.active {
+            color: #1a73e8;
+            border-bottom-color: #1a73e8;
+        }
+
+        /* Navbar scroll effect */
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Stat counter */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Exit intent overlay */
+        .exit-overlay {
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-white text-brand-800 antialiased">
+
+    <!-- ============================================ -->
+    <!-- 1. STICKY HEADER / NAVIGATION               -->
+    <!-- ============================================ -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <svg class="w-9 h-9 lg:w-10 lg:h-10 text-brand-500 group-hover:text-brand-600 transition-colors" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" fill="currentColor" opacity="0.12"/>
+                        <path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                        <path d="M17 24L22 29L31 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-brand-800 text-lg lg:text-xl leading-tight tracking-tight">EverGuard</span>
+                        <span class="text-[10px] lg:text-xs text-brand-500 font-medium tracking-widest uppercase -mt-0.5">Financial</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#about" class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors">About</a>
+                    <a href="#services" class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors">Services</a>
+                    <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors">Reviews</a>
+                    <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors">FAQ</a>
+                    <a href="tel:+14078837020" class="text-sm font-medium text-gray-600 hover:text-brand-500 transition-colors">
+                        <i class="fas fa-phone-alt text-xs mr-1"></i>(407) 883-7020
+                    </a>
+                    <a href="#book" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all pulse-cta">
+                        Book a Call
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-brand-800 hover:text-brand-500" aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#about" class="block text-sm font-medium text-gray-700 hover:text-brand-500 py-2">About</a>
+                <a href="#services" class="block text-sm font-medium text-gray-700 hover:text-brand-500 py-2">Services</a>
+                <a href="#reviews" class="block text-sm font-medium text-gray-700 hover:text-brand-500 py-2">Reviews</a>
+                <a href="#faq" class="block text-sm font-medium text-gray-700 hover:text-brand-500 py-2">FAQ</a>
+                <a href="tel:+14078837020" class="block text-sm font-medium text-gray-700 hover:text-brand-500 py-2">
+                    <i class="fas fa-phone-alt text-xs mr-1"></i>(407) 883-7020
+                </a>
+                <a href="#book" class="block text-center bg-brand-500 text-white font-semibold px-5 py-3 rounded-lg mt-2">
+                    Book a Call <i class="fas fa-arrow-right text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- 2. HERO BANNER                               -->
+    <!-- ============================================ -->
+    <section class="hero-gradient relative overflow-hidden pt-24 lg:pt-32 pb-16 lg:pb-24">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 -left-24 w-80 h-80 bg-brand-400/10 rounded-full blur-3xl"></div>
+            <!-- Grid pattern -->
+            <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><rect width=%2260%22 height=%2260%22 fill=%22none%22 stroke=%22white%22 stroke-width=%220.5%22/></svg>');"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 text-xs font-medium px-4 py-2 rounded-full mb-6 border border-white/10">
+                        <i class="fas fa-shield-alt text-brand-300"></i>
+                        Licensed & Trusted Since Day One
+                    </div>
+
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Protecting What<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-blue-300">Matters Most</span>
+                    </h1>
+
+                    <p class="text-lg lg:text-xl text-blue-100/80 max-w-xl mb-8 leading-relaxed">
+                        Licensed Life, Health & Annuity Specialist serving families with trusted financial protection. Your future, secured.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+                        <a href="#book" class="inline-flex items-center justify-center gap-2 bg-white text-brand-700 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition-all shadow-lg shadow-black/10 text-base">
+                            Book a Free Consultation
+                            <i class="fas fa-calendar-check"></i>
+                        </a>
+                        <a href="#services" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/20 transition-all border border-white/20 text-base">
+                            Learn More
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Shield Graphic -->
+                <div class="hidden lg:flex justify-center items-center">
+                    <div class="relative float-animation">
+                        <svg class="w-72 h-72 text-white/10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100 15L25 55V105C25 150 60 185 100 195C140 185 175 150 175 105V55L100 15Z" fill="currentColor"/>
+                            <path d="M100 15L25 55V105C25 150 60 185 100 195C140 185 175 150 175 105V55L100 15Z" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
+                            <path d="M70 100L90 120L130 75" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-brand-500/30 rounded-full blur-xl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Stats Bar -->
+            <div class="grid grid-cols-3 gap-4 mt-8 lg:mt-12 max-w-2xl mx-auto lg:mx-0">
+                <div class="text-center lg:text-left bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10">
+                    <div class="flex items-center justify-center lg:justify-start gap-2 text-white mb-1">
+                        <i class="fas fa-shield-alt text-brand-300 text-sm"></i>
+                        <span class="font-heading font-bold text-lg stat-number" data-target="100" data-suffix="+">0+</span>
+                    </div>
+                    <p class="text-blue-200/60 text-xs font-medium">Families Served</p>
+                </div>
+                <div class="text-center lg:text-left bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10">
+                    <div class="flex items-center justify-center lg:justify-start gap-2 text-white mb-1">
+                        <i class="fas fa-star text-yellow-400 text-sm"></i>
+                        <span class="font-heading font-bold text-lg">5.0</span>
+                    </div>
+                    <p class="text-blue-200/60 text-xs font-medium">Client Rating</p>
+                </div>
+                <div class="text-center lg:text-left bg-white/5 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10">
+                    <div class="flex items-center justify-center lg:justify-start gap-2 text-white mb-1">
+                        <i class="fas fa-certificate text-brand-300 text-sm"></i>
+                        <span class="font-heading font-bold text-lg">Licensed</span>
+                    </div>
+                    <p class="text-blue-200/60 text-xs font-medium">Life, Health & Annuities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3. TRUST BAR — "AS FEATURED IN"              -->
+    <!-- ============================================ -->
+    <section class="bg-gray-50 border-y border-gray-100 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-6">As Featured In</p>
+            <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-40 grayscale">
+                <!-- Placeholder media logos (replace with real logos) -->
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-newspaper text-2xl"></i>
+                    <span class="font-heading font-bold text-lg">Forbes</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-chart-line text-2xl"></i>
+                    <span class="font-heading font-bold text-lg">Bloomberg</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-building text-2xl"></i>
+                    <span class="font-heading font-bold text-lg">Insurance Journal</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-broadcast-tower text-2xl"></i>
+                    <span class="font-heading font-bold text-lg">CNBC</span>
+                </div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <i class="fas fa-globe text-2xl"></i>
+                    <span class="font-heading font-bold text-lg">Yahoo Finance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 4. ABOUT / CREDENTIALS                       -->
+    <!-- ============================================ -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center reveal">
+                <!-- Zach's Photo with Text Overlay -->
+                <div class="relative">
+                    <div class="aspect-[4/5] bg-brand-900 rounded-2xl overflow-hidden shadow-xl relative group">
+                        <img src="assets/zach-speaking.webp" alt="Zach Young speaking at a professional event" class="absolute inset-0 w-full h-full object-cover object-top">
+                        <!-- Dark gradient overlay for text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <!-- Text overlay -->
+                        <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                            <div class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white/90 text-[10px] font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-widest border border-white/10">
+                                <i class="fas fa-microphone-alt text-[9px]"></i>
+                                Featured Speaker
+                            </div>
+                            <h3 class="font-heading text-2xl lg:text-3xl font-bold text-white mb-1">Zach Young</h3>
+                            <p class="text-white/70 text-sm font-medium">Founder, EverGuard Financial</p>
+                        </div>
+                    </div>
+                    <!-- Floating credential badge -->
+                    <div class="absolute -bottom-4 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-brand-500 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-award text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-heading font-bold text-brand-800 text-sm">Licensed Agent</p>
+                                <p class="text-xs text-gray-500">Life, Health & Annuities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Content -->
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                        <i class="fas fa-user text-[10px]"></i>
+                        ABOUT YOUR ADVISOR
+                    </div>
+
+                    <h2 class="font-heading text-3xl lg:text-4xl font-bold text-brand-800 mb-6">
+                        Meet Zach Young
+                    </h2>
+
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        I founded EverGuard Financial with one mission: to make financial protection accessible, understandable, and trustworthy for every family. With licenses in Life Insurance, Health Insurance, and Annuities, I provide comprehensive coverage solutions tailored to your unique needs.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        I believe that the right insurance plan isn't just a policy — it's peace of mind. Whether you're protecting your family's future with life insurance, securing affordable health coverage, or building retirement income through annuities, I'm here to guide you every step of the way with transparency and care.
+                    </p>
+
+                    <!-- Credential Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                        <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-100">
+                            <div class="w-10 h-10 bg-brand-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-heart-pulse text-brand-500"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-brand-800 text-sm">Life Insurance</p>
+                                <p class="text-xs text-gray-500">Licensed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-100">
+                            <div class="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-plus-circle text-success"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-brand-800 text-sm">Health Insurance</p>
+                                <p class="text-xs text-gray-500">Licensed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 border border-gray-100">
+                            <div class="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-piggy-bank text-gold"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-brand-800 text-sm">Annuities</p>
+                                <p class="text-xs text-gray-500">Licensed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#book" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-xl transition-all">
+                        Schedule a Consultation
+                        <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 5. SERVICES CARDS                            -->
+    <!-- ============================================ -->
+    <section id="services" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                    <i class="fas fa-briefcase text-[10px]"></i>
+                    WHAT WE OFFER
+                </div>
+                <h2 class="font-heading text-3xl lg:text-4xl font-bold text-brand-800 mb-4">
+                    Comprehensive Protection Plans
+                </h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                    Every family's needs are different. Explore our coverage options designed to protect your health, your loved ones, and your financial future.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Life Insurance -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 reveal-child" style="transition-delay: 0.1s">
+                    <div class="w-14 h-14 bg-brand-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-brand-800 mb-3">Life Insurance</h3>
+                    <p class="text-gray-500 mb-6 leading-relaxed">
+                        Ensure your family's financial security with term and whole life insurance plans tailored to your budget and goals.
+                    </p>
+                    <ul class="space-y-2.5 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Term & Whole Life Options
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Affordable Monthly Premiums
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Coverage From $50K to $2M+
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            No Medical Exam Options
+                        </li>
+                    </ul>
+                    <a href="#book" class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
+                        Get a Free Quote
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Health Insurance -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 relative reveal-child" style="transition-delay: 0.2s">
+                    <div class="absolute -top-3 left-8">
+                        <span class="bg-brand-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Most Popular</span>
+                    </div>
+                    <div class="w-14 h-14 bg-success/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-plus-circle text-success text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-brand-800 mb-3">Health Insurance</h3>
+                    <p class="text-gray-500 mb-6 leading-relaxed">
+                        Navigate the health insurance marketplace with expert guidance. Find plans that protect your health without breaking the bank.
+                    </p>
+                    <ul class="space-y-2.5 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            ACA Marketplace Plans
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Medicare Supplement Options
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Dental & Vision Add-ons
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Subsidy Eligibility Help
+                        </li>
+                    </ul>
+                    <a href="#book" class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
+                        Explore Plans
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Annuities -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 reveal-child" style="transition-delay: 0.3s">
+                    <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-piggy-bank text-gold text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold text-brand-800 mb-3">Annuities</h3>
+                    <p class="text-gray-500 mb-6 leading-relaxed">
+                        Build guaranteed retirement income with annuity products designed for growth and security. Your future self will thank you.
+                    </p>
+                    <ul class="space-y-2.5 mb-8">
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Fixed & Indexed Annuities
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Guaranteed Lifetime Income
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Tax-Deferred Growth
+                        </li>
+                        <li class="flex items-start gap-2 text-sm text-gray-600">
+                            <i class="fas fa-check-circle text-success mt-0.5 text-xs"></i>
+                            Principal Protection
+                        </li>
+                    </ul>
+                    <a href="#book" class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
+                        Plan Your Retirement
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 6. CLIENT REVIEWS / TESTIMONIALS             -->
+    <!-- ============================================ -->
+    <section id="reviews" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                    <i class="fas fa-star text-[10px]"></i>
+                    CLIENT REVIEWS
+                </div>
+                <h2 class="font-heading text-3xl lg:text-4xl font-bold text-brand-800 mb-4">
+                    Trusted by Families Like Yours
+                </h2>
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <div class="stars text-xl">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="font-heading font-bold text-brand-800 text-lg">5.0</span>
+                </div>
+                <p class="text-gray-500">Based on 50+ verified reviews</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-6 border border-gray-100 reveal-child" style="transition-delay: 0.1s">
+                    <div class="stars text-sm mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">"Zach made the entire process so easy. He took the time to explain every option and helped us find the perfect life insurance plan for our family. We finally have peace of mind."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center text-white font-bold text-sm">MR</div>
+                        <div>
+                            <p class="font-semibold text-brand-800 text-sm">Maria R.</p>
+                            <p class="text-xs text-gray-500">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-6 border border-gray-100 reveal-child" style="transition-delay: 0.15s">
+                    <div class="stars text-sm mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">"I was overwhelmed by health insurance options until I spoke with Zach. He broke everything down, found me a plan that saved me $200/month, and even helped with the enrollment."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <div class="w-10 h-10 bg-success rounded-full flex items-center justify-center text-white font-bold text-sm">JT</div>
+                        <div>
+                            <p class="font-semibold text-brand-800 text-sm">James T.</p>
+                            <p class="text-xs text-gray-500">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-6 border border-gray-100 reveal-child" style="transition-delay: 0.2s">
+                    <div class="stars text-sm mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">"Zach helped my parents set up an annuity that gives them guaranteed income in retirement. His knowledge and patience made us feel completely confident in the decision."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-white font-bold text-sm">SK</div>
+                        <div>
+                            <p class="font-semibold text-brand-800 text-sm">Sarah K.</p>
+                            <p class="text-xs text-gray-500">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-6 border border-gray-100 reveal-child" style="transition-delay: 0.25s">
+                    <div class="stars text-sm mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">"As a small business owner, I needed both health and life coverage. Zach put together a comprehensive plan that covers me and my family perfectly. Highly recommend!"</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <div class="w-10 h-10 bg-brand-700 rounded-full flex items-center justify-center text-white font-bold text-sm">DL</div>
+                        <div>
+                            <p class="font-semibold text-brand-800 text-sm">David L.</p>
+                            <p class="text-xs text-gray-500">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-6 border border-gray-100 reveal-child" style="transition-delay: 0.3s">
+                    <div class="stars text-sm mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">"I referred my sister and two friends to Zach after my experience. He genuinely cares about finding the right solution, not just making a sale. That's rare in this industry."</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">AP</div>
+                        <div>
+                            <p class="font-semibold text-brand-800 text-sm">Angela P.</p>
+                            <p class="text-xs text-gray-500">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card bg-gray-50 rounded-2xl p-6 border border-gray-100 reveal-child" style="transition-delay: 0.35s">
+                    <div class="stars text-sm mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">"Professional, knowledgeable, and truly caring. Zach walked me through every detail of my annuity options and I now have a solid retirement plan. Five stars isn't enough!"</p>
+                    <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm">RH</div>
+                        <div>
+                            <p class="font-semibold text-brand-800 text-sm">Robert H.</p>
+                            <p class="text-xs text-gray-500">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review CTA -->
+            <div class="text-center mt-12 reveal">
+                <p class="text-gray-500 mb-4">Want to share your experience?</p>
+                <a href="#book" class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 font-semibold px-6 py-3 rounded-xl hover:bg-brand-100 transition-all">
+                    <i class="fab fa-google text-sm"></i>
+                    Leave a Google Review
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 7. FAQ ACCORDION                             -->
+    <!-- ============================================ -->
+    <section id="faq" class="py-20 lg:py-28 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <div class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                    <i class="fas fa-question-circle text-[10px]"></i>
+                    FREQUENTLY ASKED QUESTIONS
+                </div>
+                <h2 class="font-heading text-3xl lg:text-4xl font-bold text-brand-800 mb-4">
+                    Got Questions? We've Got Answers.
+                </h2>
+                <p class="text-gray-500 text-lg">Click a category below to learn more about your coverage options.</p>
+            </div>
+
+            <!-- FAQ Tabs -->
+            <div class="flex justify-center gap-2 mb-10 reveal">
+                <button class="tab-btn active font-semibold text-sm px-5 py-2.5 rounded-lg border-b-2 border-brand-500 bg-white shadow-sm transition-all" data-tab="life">
+                    <i class="fas fa-heart text-xs mr-1.5"></i>Life Insurance
+                </button>
+                <button class="tab-btn font-semibold text-sm px-5 py-2.5 rounded-lg border-b-2 border-transparent text-gray-500 hover:text-brand-500 bg-white shadow-sm transition-all" data-tab="health">
+                    <i class="fas fa-plus-circle text-xs mr-1.5"></i>Health Insurance
+                </button>
+                <button class="tab-btn font-semibold text-sm px-5 py-2.5 rounded-lg border-b-2 border-transparent text-gray-500 hover:text-brand-500 bg-white shadow-sm transition-all" data-tab="annuities">
+                    <i class="fas fa-piggy-bank text-xs mr-1.5"></i>Annuities
+                </button>
+            </div>
+
+            <!-- Life Insurance FAQs -->
+            <div id="faq-life" class="faq-category space-y-3">
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">What is the difference between term and whole life insurance?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Term life insurance provides coverage for a specific period (10, 20, or 30 years) and is typically more affordable. Whole life insurance provides permanent coverage for your entire life and includes a cash value component that grows over time. The best choice depends on your budget, goals, and family situation — I can help you determine which is right for you.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">How much life insurance do I need?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">A common rule of thumb is 10-15 times your annual income, but the right amount depends on factors like your debts, number of dependents, future expenses (like college tuition), and your spouse's income. During our free consultation, I'll walk you through a personalized needs analysis to determine the right coverage amount.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">Can I get life insurance without a medical exam?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Yes! Many carriers now offer no-exam life insurance policies with quick approvals — sometimes in as little as 24 hours. These policies are ideal if you want coverage fast or have health concerns that make traditional underwriting challenging. Coverage amounts typically go up to $500K or more.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">How much does life insurance cost?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Life insurance is often more affordable than people think. A healthy 30-year-old can get a $500,000 20-year term policy for as little as $20-30/month. Your rate depends on age, health, coverage amount, and policy type. I shop multiple carriers to find you the best rate available.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">When is the best time to buy life insurance?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">The best time is now. Life insurance premiums are based on your age and health — the younger and healthier you are when you apply, the lower your rates will be. Waiting even a few years can significantly increase your costs. Lock in your rate today while it's at its lowest.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Insurance FAQs -->
+            <div id="faq-health" class="faq-category space-y-3 hidden">
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">What types of health insurance plans are available?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">There are several types: HMO (Health Maintenance Organization), PPO (Preferred Provider Organization), EPO (Exclusive Provider Organization), and HDHP (High Deductible Health Plan) with HSA options. Each has different trade-offs between cost, flexibility, and provider networks. I'll help you understand which type best fits your healthcare needs and budget.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">Do I qualify for health insurance subsidies?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Many individuals and families qualify for premium tax credits and cost-sharing reductions through the ACA marketplace. Eligibility depends on your household income and size. I'll help you determine your subsidy amount and find plans where your out-of-pocket costs are minimized.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">Can I enroll in health insurance outside of open enrollment?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Yes, if you experience a qualifying life event such as losing employer coverage, getting married, having a baby, or moving to a new area, you may qualify for a Special Enrollment Period. This typically gives you 60 days to enroll. Contact me to see if you qualify.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">What does health insurance typically cover?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">ACA-compliant plans must cover 10 essential health benefits including: hospitalization, prescription drugs, maternity care, mental health services, preventive care, emergency services, lab tests, pediatric services, rehabilitative services, and outpatient care. Many plans also offer dental and vision as add-ons.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">How do I choose the right health plan for my family?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Consider your family's healthcare usage, preferred doctors, prescription needs, and budget. I'll compare plans side-by-side, check if your doctors are in-network, estimate your total annual costs (not just premiums), and help you choose the plan that gives you the best value for your specific situation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annuities FAQs -->
+            <div id="faq-annuities" class="faq-category space-y-3 hidden">
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">What is an annuity and how does it work?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">An annuity is a financial product issued by an insurance company that provides guaranteed income, typically for retirement. You contribute money (either as a lump sum or over time), and the insurer pays you back in regular installments, either immediately or at a future date. It's one of the only financial products that can guarantee you won't outlive your money.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">What are the different types of annuities?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">The three main types are: Fixed annuities (guaranteed interest rate, predictable growth), Indexed annuities (returns linked to a market index like the S&P 500 with downside protection), and Variable annuities (invested in market subaccounts with higher risk/reward potential). I primarily work with fixed and indexed annuities for their balance of growth and safety.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">Are annuities safe? Can I lose my money?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Fixed and indexed annuities are among the safest retirement vehicles available. Your principal is protected by the issuing insurance company, and fixed annuities guarantee a minimum interest rate. Indexed annuities offer market-linked growth with a floor that protects against losses. I only recommend products from highly rated, financially strong insurance carriers.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">What age should I consider buying an annuity?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Annuities can benefit people at various stages, but they're most commonly purchased between ages 45-70. Starting earlier allows more time for tax-deferred growth, while those closer to retirement can use annuities for immediate income. There's no one-size-fits-all answer — I'll help you determine if now is the right time based on your financial goals.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle w-full flex items-center justify-between p-5 text-left">
+                        <span class="font-semibold text-brand-800 pr-4">How are annuities taxed?</span>
+                        <i class="fas fa-chevron-down text-gray-400 text-sm transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-5 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Annuity earnings grow tax-deferred, meaning you won't pay taxes on gains until you withdraw the money. When you do take withdrawals, the earnings portion is taxed as ordinary income. If you purchased the annuity with after-tax dollars, your original contributions (cost basis) are not taxed again. This tax-deferred growth can significantly boost your retirement savings over time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ CTA -->
+            <div class="text-center mt-12 reveal">
+                <p class="text-gray-500 mb-4">Still have questions?</p>
+                <a href="#book" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-6 py-3 rounded-xl transition-all">
+                    <i class="fas fa-phone-alt text-sm"></i>
+                    Book a Free Call — I'll Explain Everything
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 8. BOOK A CALL SECTION                       -->
+    <!-- ============================================ -->
+    <section id="book" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-5 gap-12 items-start reveal">
+                <!-- Left: Info -->
+                <div class="lg:col-span-2">
+                    <div class="inline-flex items-center gap-2 bg-brand-50 text-brand-600 text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                        <i class="fas fa-calendar-check text-[10px]"></i>
+                        SCHEDULE A CONSULTATION
+                    </div>
+                    <h2 class="font-heading text-3xl lg:text-4xl font-bold text-brand-800 mb-6">
+                        Let's Talk About Your Protection Plan
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        Book a free, no-obligation consultation. I'll listen to your needs, answer your questions, and help you find the right coverage — no pressure, ever.
+                    </p>
+
+                    <!-- What to Expect -->
+                    <div class="space-y-4 mb-8">
+                        <h3 class="font-heading font-bold text-brand-800">What to Expect:</h3>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-brand-500 font-bold text-sm">1</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-brand-800 text-sm">Quick Needs Assessment</p>
+                                <p class="text-gray-500 text-sm">We'll discuss your goals and current coverage</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-brand-500 font-bold text-sm">2</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-brand-800 text-sm">Personalized Recommendations</p>
+                                <p class="text-gray-500 text-sm">I'll present options tailored to your budget</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span class="text-brand-500 font-bold text-sm">3</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-brand-800 text-sm">Clear Next Steps</p>
+                                <p class="text-gray-500 text-sm">No pressure — move forward on your timeline</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="space-y-3">
+                        <a href="tel:+14078837020" class="flex items-center gap-3 text-gray-600 hover:text-brand-500 transition-colors">
+                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-phone-alt text-brand-500 text-sm"></i>
+                            </div>
+                            <span class="font-medium">(407) 883-7020</span>
+                        </a>
+                        <a href="mailto:zachyounginsurancebroker@gmail.com" class="flex items-center gap-3 text-gray-600 hover:text-brand-500 transition-colors">
+                            <div class="w-10 h-10 bg-brand-50 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-brand-500 text-sm"></i>
+                            </div>
+                            <span class="font-medium">zachyounginsurancebroker@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Calendly Booking Widget -->
+                <div class="lg:col-span-3">
+                    <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
+                        <!-- Calendly inline widget begin -->
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/zachyounginsurancebroker/customer-service-1" style="min-width:320px;height:700px;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <!-- Calendly inline widget end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 9. REFERRAL / SHARE SECTION                  -->
+    <!-- ============================================ -->
+    <section id="referral" class="py-20 lg:py-28 bg-gradient-to-br from-brand-800 to-brand-900 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-400/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <div class="inline-flex items-center gap-2 bg-white/10 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-6 backdrop-blur-sm border border-white/10">
+                <i class="fas fa-gift"></i>
+                REFER A FRIEND OR FAMILY MEMBER
+            </div>
+
+            <h2 class="font-heading text-3xl lg:text-4xl font-bold text-white mb-4">
+                Know Someone Who Needs Protection?
+            </h2>
+            <p class="text-blue-200/70 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                Share my link with friends and family who could benefit from expert insurance guidance. Helping the people you care about get protected is the greatest referral.
+            </p>
+
+            <!-- Referral Link Copy -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-lg mx-auto mb-8 border border-white/10">
+                <p class="text-white/70 text-sm font-medium mb-3">Your Personal Referral Link:</p>
+                <div class="flex items-center gap-2">
+                    <input id="referral-link" type="text" value="https://everguardfinancial.com/?ref=client" readonly
+                        class="flex-1 bg-white/10 text-white font-mono text-sm px-4 py-3 rounded-xl border border-white/10 focus:outline-none">
+                    <button id="copy-link-btn" onclick="copyReferralLink()" class="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-5 py-3 rounded-xl transition-all flex items-center gap-2 whitespace-nowrap">
+                        <i class="fas fa-copy text-sm"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <p id="copy-feedback" class="text-success text-xs mt-2 opacity-0 transition-opacity">Link copied to clipboard!</p>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-6">
+                <a href="https://wa.me/?text=Check%20out%20my%20insurance%20advisor%20Zach%20Young%20at%20EverGuard%20Financial%3A%20https%3A%2F%2Feverguardfinancial.com%2F%3Fref%3Dclient" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">
+                    <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+                <a href="sms:?body=Check%20out%20my%20insurance%20advisor%20Zach%20Young%20at%20EverGuard%20Financial%3A%20https%3A%2F%2Feverguardfinancial.com%2F%3Fref%3Dclient"
+                    class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">
+                    <i class="fas fa-comment-sms text-lg"></i> Text
+                </a>
+                <a href="mailto:?subject=Great%20Insurance%20Advisor&body=I%20wanted%20to%20share%20my%20insurance%20advisor%20with%20you.%20Zach%20Young%20at%20EverGuard%20Financial%20helped%20me%20find%20the%20perfect%20plan.%20Check%20him%20out%3A%20https%3A%2F%2Feverguardfinancial.com%2F%3Fref%3Dclient"
+                    class="inline-flex items-center gap-2 bg-gray-600 hover:bg-gray-500 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">
+                    <i class="fas fa-envelope text-lg"></i> Email
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feverguardfinancial.com%2F%3Fref%3Dclient" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-2 bg-[#1877F2] hover:bg-[#166FE5] text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">
+                    <i class="fab fa-facebook-f text-lg"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Feverguardfinancial.com%2F%3Fref%3Dclient" target="_blank" rel="noopener"
+                    class="inline-flex items-center gap-2 bg-[#0A66C2] hover:bg-[#094FB3] text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">
+                    <i class="fab fa-linkedin-in text-lg"></i> LinkedIn
+                </a>
+            </div>
+
+            <p class="text-blue-200/50 text-sm">Thank you for trusting me with your referrals.</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 10. FOOTER                                   -->
+    <!-- ============================================ -->
+    <footer class="bg-brand-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <!-- Logo & About -->
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center gap-2.5 mb-4">
+                        <svg class="w-9 h-9 text-brand-400" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" fill="currentColor" opacity="0.2"/>
+                            <path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                            <path d="M17 24L22 29L31 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div>
+                            <span class="font-heading font-bold text-white text-lg">EverGuard</span>
+                            <span class="text-brand-400 text-xs font-medium tracking-widest uppercase block -mt-0.5">Financial</span>
+                        </div>
+                    </a>
+                    <p class="text-blue-200/50 text-sm leading-relaxed max-w-sm mb-6">
+                        Trusted insurance solutions for families who want peace of mind. Licensed in Life, Health & Annuities.
+                    </p>
+                    <!-- Social Links -->
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-all" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-all" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-all" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-all" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-brand-500 rounded-lg flex items-center justify-center transition-all" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#about" class="text-blue-200/50 hover:text-white text-sm transition-colors">About Zach</a></li>
+                        <li><a href="#services" class="text-blue-200/50 hover:text-white text-sm transition-colors">Services</a></li>
+                        <li><a href="#reviews" class="text-blue-200/50 hover:text-white text-sm transition-colors">Client Reviews</a></li>
+                        <li><a href="#faq" class="text-blue-200/50 hover:text-white text-sm transition-colors">FAQ</a></li>
+                        <li><a href="#book" class="text-blue-200/50 hover:text-white text-sm transition-colors">Book a Call</a></li>
+                        <li><a href="#referral" class="text-blue-200/50 hover:text-white text-sm transition-colors">Refer a Friend</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-heading font-bold text-white mb-4">Contact</h4>
+                    <ul class="space-y-2.5">
+                        <li>
+                            <a href="tel:+14078837020" class="text-blue-200/50 hover:text-white text-sm transition-colors flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-xs"></i> (407) 883-7020
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:zachyounginsurancebroker@gmail.com" class="text-blue-200/50 hover:text-white text-sm transition-colors flex items-center gap-2">
+                                <i class="fas fa-envelope text-xs"></i> zachyounginsurancebroker@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Trust Badge -->
+                    <div class="mt-6 bg-white/5 rounded-xl p-4 border border-white/10">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="fas fa-shield-alt text-brand-400 text-sm"></i>
+                            <span class="text-white text-sm font-semibold">Licensed & Secure</span>
+                        </div>
+                        <p class="text-blue-200/40 text-xs">Licensed Insurance Professional<br>Life, Health & Annuity Products</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-white/10 pt-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-blue-200/40 text-xs">&copy; 2026 EverGuard Financial. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="text-blue-200/40 hover:text-white text-xs transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-blue-200/40 hover:text-white text-xs transition-colors">Terms of Service</a>
+                        <a href="#" class="text-blue-200/40 hover:text-white text-xs transition-colors">Disclosures</a>
+                    </div>
+                </div>
+                <p class="text-blue-200/30 text-[10px] mt-4 text-center max-w-3xl mx-auto leading-relaxed">
+                    Insurance products and services are offered through EverGuard Financial. Products and availability may vary by state. This website is for informational purposes only and does not constitute financial advice. Please consult with a licensed professional regarding your specific situation.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- FLOATING MOBILE CTA                          -->
+    <!-- ============================================ -->
+    <div id="floating-cta" class="floating-cta hidden fixed bottom-6 right-6 z-40 lg:hidden">
+        <a href="#book" class="flex items-center gap-2 bg-brand-500 text-white font-bold px-5 py-3.5 rounded-full shadow-xl shadow-brand-500/30 hover:bg-brand-600 transition-all">
+            <i class="fas fa-calendar-check"></i>
+            Book a Call
+        </a>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- EXIT-INTENT POPUP                            -->
+    <!-- ============================================ -->
+    <div id="exit-popup" class="fixed inset-0 z-[60] hidden">
+        <div class="exit-overlay absolute inset-0 bg-black/60" onclick="closeExitPopup()"></div>
+        <div class="relative flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative transform scale-95 opacity-0 transition-all duration-300" id="exit-popup-content">
+                <button onclick="closeExitPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-paper text-brand-500 text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-brand-800 mb-2">Wait — Don't Leave Unprotected</h3>
+                    <p class="text-gray-500 mb-6">
+                        Your family's financial security is too important. Book a free, no-pressure consultation and let's find the right plan for you.
+                    </p>
+                    <a href="#book" onclick="closeExitPopup()" class="inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-xl transition-all w-full text-lg">
+                        <i class="fas fa-calendar-check"></i>
+                        Book My Free Call
+                    </a>
+                    <p class="text-gray-400 text-xs mt-4">No spam. No obligation. Just expert guidance.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT                                   -->
+    <!-- ============================================ -->
+    <script>
+        // ---- Mobile Menu Toggle ----
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        let menuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('hidden');
+            const icon = document.getElementById('menu-icon');
+            if (menuOpen) {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            }
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuOpen = false;
+                document.getElementById('menu-icon').setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+
+        // ---- Navbar Scroll Effect ----
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // ---- FAQ Accordion ----
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const answer = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                const isOpen = answer.classList.contains('open');
+
+                // Close all in same category
+                toggle.closest('.faq-category').querySelectorAll('.faq-answer').forEach(a => {
+                    a.classList.remove('open');
+                });
+                toggle.closest('.faq-category').querySelectorAll('.faq-toggle i').forEach(i => {
+                    i.style.transform = 'rotate(0deg)';
+                });
+
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // ---- FAQ Tab Switching ----
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+
+                // Update tab styles
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.style.borderBottomColor = 'transparent';
+                    b.classList.add('text-gray-500');
+                });
+                btn.classList.add('active');
+                btn.style.borderBottomColor = '#1a73e8';
+                btn.classList.remove('text-gray-500');
+
+                // Show correct FAQ category
+                document.querySelectorAll('.faq-category').forEach(cat => cat.classList.add('hidden'));
+                document.getElementById('faq-' + tab).classList.remove('hidden');
+            });
+        });
+
+        // ---- Copy Referral Link ----
+        function copyReferralLink() {
+            const link = document.getElementById('referral-link');
+            const btn = document.getElementById('copy-link-btn');
+            const feedback = document.getElementById('copy-feedback');
+
+            navigator.clipboard.writeText(link.value).then(() => {
+                btn.innerHTML = '<i class="fas fa-check text-sm"></i><span>Copied!</span>';
+                btn.classList.add('copy-success', 'bg-success');
+                btn.classList.remove('bg-brand-500');
+                feedback.style.opacity = '1';
+
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy text-sm"></i><span>Copy</span>';
+                    btn.classList.remove('copy-success', 'bg-success');
+                    btn.classList.add('bg-brand-500');
+                    feedback.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
+        // ---- Scroll Reveal Animations ----
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Also reveal children with staggered delay
+                    entry.target.querySelectorAll('.reveal-child').forEach((child, i) => {
+                        setTimeout(() => child.classList.add('visible'), i * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Also observe reveal-children that are direct section children
+        const childObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-child').forEach(el => {
+            if (!el.closest('.reveal')) {
+                childObserver.observe(el);
+            }
+        });
+
+        // ---- Floating CTA on Mobile ----
+        const floatingCta = document.getElementById('floating-cta');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                floatingCta.classList.remove('hidden');
+            } else {
+                floatingCta.classList.add('hidden');
+            }
+        });
+
+        // ---- Exit Intent Popup ----
+        let exitPopupShown = false;
+        const exitPopup = document.getElementById('exit-popup');
+        const exitPopupContent = document.getElementById('exit-popup-content');
+
+        document.addEventListener('mouseout', (e) => {
+            if (!exitPopupShown && e.clientY < 10 && e.relatedTarget === null) {
+                showExitPopup();
+            }
+        });
+
+        function showExitPopup() {
+            exitPopupShown = true;
+            exitPopup.classList.remove('hidden');
+            setTimeout(() => {
+                exitPopupContent.style.transform = 'scale(1)';
+                exitPopupContent.style.opacity = '1';
+            }, 50);
+        }
+
+        function closeExitPopup() {
+            exitPopupContent.style.transform = 'scale(0.95)';
+            exitPopupContent.style.opacity = '0';
+            setTimeout(() => exitPopup.classList.add('hidden'), 300);
+        }
+
+        // ---- Stat Counter Animation ----
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    const suffix = el.dataset.suffix || '';
+                    let current = 0;
+                    const increment = target / 40;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            el.textContent = target + suffix;
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                    statObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => statObserver.observe(el));
+    </script>
+</body>
+</html>
