@@ -1877,18 +1877,31 @@
                 try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e2) {}
             }
 
-            // Save on input (debounced 500ms)
+            // Save on input (debounced 500ms) AND immediately on blur/change/visibility-hidden
+            // so data isn't lost if user leaves before the debounce fires
             let saveTimer;
-            quoteFormEl.addEventListener('input', () => {
+            const saveDraft = () => {
+                const data = { _savedAt: Date.now() };
+                quoteFormFields.forEach(name => {
+                    const field = quoteFormEl.querySelector('[name="' + name + '"]');
+                    if (field && field.value) data[name] = field.value;
+                });
+                try { localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+            };
+            const saveDraftDebounced = () => {
                 clearTimeout(saveTimer);
-                saveTimer = setTimeout(() => {
-                    const data = { _savedAt: Date.now() };
-                    quoteFormFields.forEach(name => {
-                        const field = quoteFormEl.querySelector('[name="' + name + '"]');
-                        if (field && field.value) data[name] = field.value;
-                    });
-                    try { localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
-                }, 500);
+                saveTimer = setTimeout(saveDraft, 500);
+            };
+            quoteFormEl.addEventListener('input', saveDraftDebounced);
+            // Immediate save when user blurs out of any field (catches keystrokes
+            // that happened in the last <500ms before they left the field)
+            quoteFormEl.addEventListener('focusout', () => { clearTimeout(saveTimer); saveDraft(); });
+            // Immediate save when tab is hidden (user switching apps, closing browser)
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    clearTimeout(saveTimer);
+                    saveDraft();
+                }
             });
 
             // Don't clear draft on submit — if submission fails (network error,
