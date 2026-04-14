@@ -24,6 +24,9 @@ h1 { font-family: 'Outfit', sans-serif; }
 .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a73e8 100%); }
 @keyframes check-pop { 0% { transform: scale(0); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
 .check-pop { animation: check-pop 0.5s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .check-pop { animation: none !important; }
+}
 </style>
 </head>
 <body class="min-h-screen gradient-bg text-white antialiased flex items-center justify-center p-4">
