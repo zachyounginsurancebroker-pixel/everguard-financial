@@ -55,23 +55,48 @@
     <meta name="format-detection" content="telephone=yes">
     <link rel="apple-touch-icon" href="https://everguard-financial.vercel.app/assets/og-image.jpg">
 
-    <!-- JSON-LD structured data for rich Google/search previews -->
+    <!-- JSON-LD: InsuranceAgency (more specific than ProfessionalService for SEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
+      "@type": "InsuranceAgency",
       "name": "EverGuard Financial",
       "image": "https://everguard-financial.vercel.app/assets/og-image.jpg",
+      "logo": "https://everguard-financial.vercel.app/favicon.svg",
       "url": "https://everguard-financial.vercel.app/",
       "telephone": "+1-407-883-7020",
       "email": "zachyounginsurancebroker@gmail.com",
-      "description": "Licensed Life, Health \u0026 Annuity Specialist serving families with trusted financial protection.",
-      "priceRange": "$$",
+      "description": "Licensed Life, Health \u0026 Annuity Specialist serving families with trusted financial protection. Free consultations, no fees, carrier-paid only.",
+      "priceRange": "Free consultations",
+      "areaServed": {
+        "@type": "State",
+        "name": "Florida"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Insurance Products",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Life Insurance" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Health Insurance" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Annuities" } }
+        ]
+      },
       "founder": {
         "@type": "Person",
         "name": "Zach Young",
-        "jobTitle": "Licensed Insurance Agent"
-      }
+        "jobTitle": "Licensed Insurance Agent",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "EverGuard Financial"
+        }
+      },
+      "sameAs": [],
+      "knowsAbout": ["Life Insurance", "Health Insurance", "Annuities", "Retirement Planning", "Family Financial Protection"]
     }
     </script>
 
