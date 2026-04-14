@@ -1913,6 +1913,13 @@
                 // Brief visual highlight for sighted users
                 select.classList.add('ring-2', 'ring-brand-500');
                 setTimeout(() => select.classList.remove('ring-2', 'ring-brand-500'), 1500);
+                // Auto-focus Name field after the smooth-scroll anchor navigation
+                // completes (~600ms typical scroll). User can immediately start typing.
+                // preventScroll: avoid double-scroll fight with the anchor scroll.
+                setTimeout(() => {
+                    const nameField = document.getElementById('q-name');
+                    if (nameField && !nameField.value) nameField.focus({ preventScroll: true });
+                }, 700);
                 // Screen reader users: when they Tab to the select, they'll hear the
                 // current value ("Annuities, combobox") — native behavior is sufficient
             });
