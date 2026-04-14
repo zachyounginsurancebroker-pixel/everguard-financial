@@ -1767,11 +1767,44 @@
         const exitPopup = document.getElementById('exit-popup');
         const exitPopupContent = document.getElementById('exit-popup-content');
 
+        // Desktop: fires when cursor leaves viewport top (tab close / back button intent)
         document.addEventListener('mouseout', (e) => {
             if (!exitPopupShown && e.clientY < 10 && e.relatedTarget === null) {
                 showExitPopup();
             }
         });
+
+        // Mobile: no mouseout event — detect back-button intent via scroll-up after deep scroll
+        let deepestScroll = 0;
+        let lastScroll = 0;
+        const isTouchDevice = 'ontouchstart' in window;
+        if (isTouchDevice) {
+            window.addEventListener('scroll', () => {
+                if (exitPopupShown) return;
+                const y = window.scrollY;
+                deepestScroll = Math.max(deepestScroll, y);
+                // Trigger if user has scrolled past 50% of page and is now scrolling UP by >200px
+                const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (deepestScroll > pageHeight * 0.5 && lastScroll - y > 200) {
+                    showExitPopup();
+                }
+                lastScroll = y;
+            }, { passive: true });
+
+            // Secondary mobile trigger: Page Visibility API (when user switches tabs/apps)
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden' && !exitPopupShown && deepestScroll > 500) {
+                    // User backgrounded the tab after engaging — queue popup for return
+                    const returnListener = () => {
+                        if (document.visibilityState === 'visible') {
+                            setTimeout(() => { if (!exitPopupShown) showExitPopup(); }, 1000);
+                            document.removeEventListener('visibilitychange', returnListener);
+                        }
+                    };
+                    document.addEventListener('visibilitychange', returnListener);
+                }
+            });
+        }
 
         let exitPopupPreviousFocus = null;
         function showExitPopup() {
