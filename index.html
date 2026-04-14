@@ -877,7 +877,7 @@
                             No Medical Exam Options
                         </li>
                     </ul>
-                    <a href="#book" class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
+                    <a href="#quote" data-preselect="Life Insurance" class="service-cta inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
                         Get a Free Quote
                         <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
                     </a>
@@ -913,7 +913,7 @@
                             Subsidy Eligibility Help
                         </li>
                     </ul>
-                    <a href="#book" class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
+                    <a href="#quote" data-preselect="Health Insurance" class="service-cta inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
                         Explore Plans
                         <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
                     </a>
@@ -949,7 +949,7 @@
                     <p class="text-[10px] text-gray-400 italic mb-6 leading-snug">
                         *Guarantees subject to the claims-paying ability of the issuing insurance company. See <a href="/disclosures" class="underline hover:text-brand-500">disclosures</a>.
                     </p>
-                    <a href="#book" class="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
+                    <a href="#quote" data-preselect="Annuities" class="service-cta inline-flex items-center gap-2 text-brand-500 font-semibold text-sm hover:text-brand-600 transition-colors group">
                         Plan Your Retirement
                         <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
                     </a>
@@ -1790,6 +1790,20 @@
             // Fallback 2: absolute timeout — load after 5s no matter what, so bookings always work
             setTimeout(loadCalendly, 5000);
         }
+
+        // ---- Service-card CTAs pre-select insurance type in Quick Quote form ----
+        document.querySelectorAll('.service-cta[data-preselect]').forEach(cta => {
+            cta.addEventListener('click', () => {
+                const value = cta.dataset.preselect;
+                const select = document.getElementById('q-type');
+                if (select) {
+                    select.value = value;
+                    // Brief highlight so user notices the pre-selection
+                    select.classList.add('ring-2', 'ring-brand-500');
+                    setTimeout(() => select.classList.remove('ring-2', 'ring-brand-500'), 1500);
+                }
+            });
+        });
 
         // ---- Prevent double-submit on Quick Quote form (with safety timeout) ----
         const quoteForm = document.getElementById('quote-form');
