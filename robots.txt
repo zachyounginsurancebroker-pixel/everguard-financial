@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Explicitly allow social media scrapers (redundant but explicit)
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+Sitemap: https://everguard-financial.vercel.app/sitemap.xml
