@@ -352,6 +352,11 @@
         .safe-right {
             right: calc(1rem + env(safe-area-inset-right));
         }
+        .footer-safe {
+            padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
 
         /* Testimonial cards */
         .testimonial-card {
@@ -1283,7 +1288,7 @@
     <!-- ============================================ -->
     </main>
 
-    <footer class="bg-brand-900 text-white pt-16 pb-8">
+    <footer class="bg-brand-900 text-white pt-16 pb-8 footer-safe">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-10 mb-12">
                 <!-- Logo & About -->
