@@ -1645,27 +1645,38 @@
             });
         }
 
-        // ---- Lazy-load Calendly widget only when user scrolls near booking section ----
+        // ---- Lazy-load Calendly widget (with fallback to ensure it always loads) ----
         const calendlyContainer = document.getElementById('calendly-container');
-        if (calendlyContainer && 'IntersectionObserver' in window) {
-            const calendlyLoader = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const s = document.createElement('script');
-                        s.src = 'https://assets.calendly.com/assets/external/widget.js';
-                        s.async = true;
-                        document.body.appendChild(s);
-                        obs.disconnect();
-                    }
-                });
-            }, { rootMargin: '300px' });
-            calendlyLoader.observe(calendlyContainer);
-        } else if (calendlyContainer) {
-            // Fallback for older browsers: load immediately
+        let calendlyLoaded = false;
+        const loadCalendly = () => {
+            if (calendlyLoaded) return;
+            calendlyLoaded = true;
             const s = document.createElement('script');
             s.src = 'https://assets.calendly.com/assets/external/widget.js';
             s.async = true;
             document.body.appendChild(s);
+        };
+        if (calendlyContainer) {
+            // Primary path: IntersectionObserver triggers when user scrolls near booking section
+            if ('IntersectionObserver' in window) {
+                const calendlyLoader = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            loadCalendly();
+                            obs.disconnect();
+                        }
+                    });
+                }, { rootMargin: '300px' });
+                calendlyLoader.observe(calendlyContainer);
+            }
+            // Fallback 1: first user interaction (scroll, click, key, touch) — guarantees load on any engagement
+            const onInteract = () => {
+                loadCalendly();
+                ['scroll', 'click', 'keydown', 'touchstart'].forEach(ev => window.removeEventListener(ev, onInteract));
+            };
+            ['scroll', 'click', 'keydown', 'touchstart'].forEach(ev => window.addEventListener(ev, onInteract, { passive: true, once: false }));
+            // Fallback 2: absolute timeout — load after 5s no matter what, so bookings always work
+            setTimeout(loadCalendly, 5000);
         }
 
         // ---- Prevent double-submit on Quick Quote form ----
