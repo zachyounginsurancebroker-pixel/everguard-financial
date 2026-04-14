@@ -202,8 +202,9 @@
         }
     </script>
 
-    <!-- Preload the hero image (LCP) for fastest paint -->
-    <link rel="preload" as="image" href="assets/hero-couple-beach.jpg" fetchpriority="high">
+    <!-- Preload the hero image (LCP) for fastest paint — WebP for supported browsers -->
+    <link rel="preload" as="image" href="assets/hero-couple-beach.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero-couple-beach.jpg" fetchpriority="high" media="(prefers-reduced-data: reduce)">
 
     <!-- DNS prefetch + preconnect for all external CDNs (parallel DNS/TLS with HTML parsing) -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
@@ -465,8 +466,11 @@
     <!-- ============================================ -->
     <main id="main-content">
     <section class="bg-brand-900 relative overflow-hidden pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <!-- Background image -->
-        <img src="assets/hero-couple-beach.jpg" alt="Peaceful couple enjoying retirement on the beach" width="1376" height="768" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover">
+        <!-- Background image (WebP for modern browsers, JPEG fallback) -->
+        <picture class="absolute inset-0 w-full h-full">
+            <source srcset="assets/hero-couple-beach.webp" type="image/webp">
+            <img src="assets/hero-couple-beach.jpg" alt="Peaceful couple enjoying retirement on the beach" width="1376" height="768" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover">
+        </picture>
         <!-- Dark gradient overlay for text readability -->
         <div class="absolute inset-0 bg-gradient-to-r from-brand-900/95 via-brand-900/75 to-brand-900/30"></div>
         <!-- Extra bottom fade for smooth transition -->
