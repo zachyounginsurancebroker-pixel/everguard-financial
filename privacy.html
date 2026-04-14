@@ -89,8 +89,9 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 
 <footer class="border-t border-gray-100 py-6 mt-12">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-gray-500">
-&copy; 2026 EverGuard Financial. All rights reserved.
+&copy; <span id="copyright-year">2026</span> EverGuard Financial. All rights reserved.
 </div>
 </footer>
+<script>document.addEventListener("DOMContentLoaded",()=>{var y=document.getElementById("copyright-year");if(y)y.textContent=new Date().getFullYear();});</script>
 </body>
 </html>
