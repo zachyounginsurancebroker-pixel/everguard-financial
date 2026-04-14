@@ -1811,6 +1811,44 @@
             setTimeout(loadCalendly, 5000);
         }
 
+        // ---- Form auto-save (localStorage) — preserve partial input across refreshes ----
+        const FORM_STORAGE_KEY = 'eg-quote-form-draft';
+        const quoteFormFields = ['name', 'email', 'phone', 'insurance_type', 'message'];
+        const quoteFormEl = document.getElementById('quote-form');
+
+        if (quoteFormEl && 'localStorage' in window) {
+            // Restore on page load
+            try {
+                const saved = JSON.parse(localStorage.getItem(FORM_STORAGE_KEY) || '{}');
+                quoteFormFields.forEach(name => {
+                    if (saved[name]) {
+                        const field = quoteFormEl.querySelector('[name="' + name + '"]');
+                        if (field) field.value = saved[name];
+                    }
+                });
+            } catch (e) { /* Corrupted storage — ignore */ }
+
+            // Save on input (debounced)
+            let saveTimer;
+            quoteFormEl.addEventListener('input', () => {
+                clearTimeout(saveTimer);
+                saveTimer = setTimeout(() => {
+                    const data = {};
+                    quoteFormFields.forEach(name => {
+                        const field = quoteFormEl.querySelector('[name="' + name + '"]');
+                        if (field && field.value) data[name] = field.value;
+                    });
+                    try { localStorage.setItem(FORM_STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+                }, 500);
+            });
+
+            // Clear on successful submit (the page navigates to /thanks, but in case
+            // of back-button: we don't want to accidentally resurrect the already-sent form)
+            quoteFormEl.addEventListener('submit', () => {
+                try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e) {}
+            });
+        }
+
         // ---- Service-card CTAs pre-select insurance type in Quick Quote form ----
         document.querySelectorAll('.service-cta[data-preselect]').forEach(cta => {
             cta.addEventListener('click', () => {
