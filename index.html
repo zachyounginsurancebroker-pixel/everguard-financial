@@ -1354,7 +1354,16 @@
                 <div class="lg:col-span-3">
                     <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
                         <div id="calendly-container" class="calendly-inline-widget" data-url="https://calendly.com/zachyounginsurancebroker/customer-service-1" style="min-width:320px;height:700px;" aria-label="Calendly booking widget">
-                            <!-- Fallback if Calendly doesn't load -->
+                            <!-- Loading placeholder — visible until Calendly iframe renders over it -->
+                            <div id="calendly-loading" class="flex flex-col items-center justify-center h-full text-center px-6" role="status" aria-live="polite">
+                                <svg class="w-10 h-10 text-brand-500 mb-3 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-opacity="0.25" stroke-width="3"/>
+                                    <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                </svg>
+                                <p class="text-sm font-medium text-brand-800">Loading scheduler…</p>
+                                <p class="text-xs text-gray-500 mt-1">If this doesn't load, <a href="https://calendly.com/zachyounginsurancebroker/customer-service-1" target="_blank" rel="noopener noreferrer" class="text-brand-500 underline">click here to book</a></p>
+                            </div>
+                            <!-- Fallback if Calendly doesn't load (JS disabled) -->
                             <noscript>
                                 <div style="padding:2rem;text-align:center;">
                                     <p style="margin-bottom:1rem;">To book a consultation, please enable JavaScript or visit:</p>
