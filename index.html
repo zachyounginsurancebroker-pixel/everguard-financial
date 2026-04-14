@@ -548,9 +548,15 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Exit intent overlay */
+        /* Exit intent overlay — backdrop-filter for blur effect */
         .exit-overlay {
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px); /* Safari ≤14 */
+        }
+        /* Disable backdrop-filter for motion-sensitive users (eases GPU load) and
+           where it's unsupported (gracefully falls back to solid black/60 bg) */
+        @media (prefers-reduced-motion: reduce) {
+            .exit-overlay { backdrop-filter: none; -webkit-backdrop-filter: none; }
         }
     </style>
 </head>
