@@ -4,6 +4,7 @@
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/disclosures", "destination": "/disclosures.html" }
   ],
+  "errorPage": "404.html",
   "headers": [
     {
       "source": "/",
