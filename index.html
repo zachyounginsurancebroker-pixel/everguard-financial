@@ -1820,9 +1820,11 @@
 
         // ---- Form auto-save (localStorage) — preserve partial input across refreshes ----
         // TTL: drafts older than 7 days auto-expire (privacy defense on shared devices)
+        // NOTE: 'message' is intentionally EXCLUDED — users may write health details,
+        // financial situations, or family info there; we don't persist that in localStorage.
         const FORM_STORAGE_KEY = 'eg-quote-form-draft';
         const FORM_STORAGE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-        const quoteFormFields = ['name', 'email', 'phone', 'insurance_type', 'message'];
+        const quoteFormFields = ['name', 'email', 'phone', 'insurance_type'];
         const quoteFormEl = document.getElementById('quote-form');
 
         if (quoteFormEl && 'localStorage' in window) {
