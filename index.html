@@ -1791,17 +1791,16 @@
                 lastScroll = y;
             }, { passive: true });
 
-            // Secondary mobile trigger: Page Visibility API (when user switches tabs/apps)
+            // Secondary mobile trigger: Page Visibility API (user returns after backgrounding)
+            // State machine: idle → armed (user engaged then left) → fire on return
+            let armedForReturn = false;
             document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'hidden' && !exitPopupShown && deepestScroll > 500) {
-                    // User backgrounded the tab after engaging — queue popup for return
-                    const returnListener = () => {
-                        if (document.visibilityState === 'visible') {
-                            setTimeout(() => { if (!exitPopupShown) showExitPopup(); }, 1000);
-                            document.removeEventListener('visibilitychange', returnListener);
-                        }
-                    };
-                    document.addEventListener('visibilitychange', returnListener);
+                if (exitPopupShown) return;
+                if (document.visibilityState === 'hidden' && deepestScroll > 500) {
+                    armedForReturn = true;
+                } else if (document.visibilityState === 'visible' && armedForReturn) {
+                    armedForReturn = false;
+                    setTimeout(() => { if (!exitPopupShown) showExitPopup(); }, 1000);
                 }
             });
         }
