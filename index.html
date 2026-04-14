@@ -1797,6 +1797,10 @@
                 const value = cta.dataset.preselect;
                 const select = document.getElementById('q-type');
                 if (!select) return;
+                // Only pre-select if the option actually exists (defensive against
+                // future option-label changes breaking this quietly)
+                const optionExists = Array.from(select.options).some(o => o.value === value);
+                if (!optionExists) return;
                 select.value = value;
                 // Dispatch 'change' event so any form validators / analytics listeners fire
                 select.dispatchEvent(new Event('change', { bubbles: true }));
