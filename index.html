@@ -1905,6 +1905,9 @@
                 saveTimer = setTimeout(saveDraft, 500);
             };
             quoteFormEl.addEventListener('input', saveDraftDebounced);
+            // 'change' event catches browser autofill on Safari/Firefox which don't
+            // always fire 'input' for password-manager / contact-card autofill
+            quoteFormEl.addEventListener('change', saveDraftDebounced);
             // Immediate save when user blurs out of any field (catches keystrokes
             // that happened in the last <500ms before they left the field)
             quoteFormEl.addEventListener('focusout', () => { clearTimeout(saveTimer); saveDraft(); });
