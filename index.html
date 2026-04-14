@@ -1297,13 +1297,18 @@
                     </div>
                 </div>
 
-                <!-- Right: Calendly Booking Widget -->
+                <!-- Right: Calendly Booking Widget (lazy-loaded when user scrolls near it) -->
                 <div class="lg:col-span-3">
                     <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
-                        <!-- Calendly inline widget begin -->
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/zachyounginsurancebroker/customer-service-1" style="min-width:320px;height:700px;"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                        <!-- Calendly inline widget end -->
+                        <div id="calendly-container" class="calendly-inline-widget" data-url="https://calendly.com/zachyounginsurancebroker/customer-service-1" style="min-width:320px;height:700px;" aria-label="Calendly booking widget">
+                            <!-- Fallback if Calendly doesn't load -->
+                            <noscript>
+                                <div style="padding:2rem;text-align:center;">
+                                    <p style="margin-bottom:1rem;">To book a consultation, please enable JavaScript or visit:</p>
+                                    <a href="https://calendly.com/zachyounginsurancebroker/customer-service-1" style="color:#1a73e8;font-weight:600;">calendly.com/zachyounginsurancebroker</a>
+                                </div>
+                            </noscript>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1629,6 +1634,29 @@
                     feedback.style.opacity = '0';
                 }, 2000);
             });
+        }
+
+        // ---- Lazy-load Calendly widget only when user scrolls near booking section ----
+        const calendlyContainer = document.getElementById('calendly-container');
+        if (calendlyContainer && 'IntersectionObserver' in window) {
+            const calendlyLoader = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const s = document.createElement('script');
+                        s.src = 'https://assets.calendly.com/assets/external/widget.js';
+                        s.async = true;
+                        document.body.appendChild(s);
+                        obs.disconnect();
+                    }
+                });
+            }, { rootMargin: '300px' });
+            calendlyLoader.observe(calendlyContainer);
+        } else if (calendlyContainer) {
+            // Fallback for older browsers: load immediately
+            const s = document.createElement('script');
+            s.src = 'https://assets.calendly.com/assets/external/widget.js';
+            s.async = true;
+            document.body.appendChild(s);
         }
 
         // ---- Prevent double-submit on Quick Quote form ----
