@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US" class="scroll-smooth">
+<html lang="en-US" class="scroll-smooth no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
+<script>document.documentElement.classList.replace('no-js', 'js')</script>
 <title>EverGuard Financial | Protecting What Matters Most</title>
 <meta property="og:image" content="https://everguard-financial.vercel.app/assets/og-image.jpg">
 <meta property="og:title" content="EverGuard Financial | Protecting What Matters Most">
@@ -443,6 +444,16 @@
             max-height: 500px;
             opacity: 1;
             padding-bottom: 1.25rem !important;
+        }
+
+        /* No-JS fallback: show all FAQ content when JS is disabled */
+        .no-js .faq-answer {
+            max-height: none !important;
+            opacity: 1 !important;
+            padding-bottom: 1.25rem !important;
+        }
+        .no-js .faq-category {
+            display: block !important;
         }
 
         /* Safe-area support for notched iPhones (viewport-fit=cover) */
