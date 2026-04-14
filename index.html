@@ -1921,12 +1921,29 @@
         // ---- Prevent double-submit on Quick Quote form (with safety timeout) ----
         const quoteForm = document.getElementById('quote-form');
         if (quoteForm) {
-            quoteForm.addEventListener('submit', () => {
+            // Anti-bot: track when the form was first interacted with
+            let formFirstInteraction = 0;
+            quoteForm.addEventListener('focusin', () => {
+                if (!formFirstInteraction) formFirstInteraction = Date.now();
+            }, { once: true });
+
+            quoteForm.addEventListener('submit', (e) => {
                 const btn = document.getElementById('quote-submit');
                 const txt = document.getElementById('quote-submit-text');
                 const icon = document.getElementById('quote-submit-icon');
                 const originalText = txt ? txt.textContent : 'Send My Quote Request';
                 const originalIconClass = icon ? icon.className : '';
+
+                // Bot heuristic: if the form was submitted in <2 seconds since first
+                // user focus, it's almost certainly a bot. Real humans take longer
+                // to read fields and type. CAPTCHA + honeypot are still primary
+                // defense; this catches the rare bot that bypasses both.
+                const elapsed = formFirstInteraction ? Date.now() - formFirstInteraction : 0;
+                if (formFirstInteraction && elapsed < 2000) {
+                    e.preventDefault();
+                    console.warn('Submission blocked: form filled too quickly (likely bot)');
+                    return;
+                }
 
                 // Clear any stale error from a previous failed attempt
                 if (btn && btn.parentElement) {
