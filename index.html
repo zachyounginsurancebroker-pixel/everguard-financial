@@ -1791,17 +1791,37 @@
             setTimeout(loadCalendly, 5000);
         }
 
-        // ---- Prevent double-submit on Quick Quote form ----
+        // ---- Prevent double-submit on Quick Quote form (with safety timeout) ----
         const quoteForm = document.getElementById('quote-form');
         if (quoteForm) {
             quoteForm.addEventListener('submit', () => {
                 const btn = document.getElementById('quote-submit');
                 const txt = document.getElementById('quote-submit-text');
+                const originalText = txt ? txt.textContent : 'Send My Quote Request';
                 if (btn) {
                     btn.disabled = true;
                     btn.setAttribute('aria-busy', 'true');
                 }
                 if (txt) txt.textContent = 'Sending…';
+
+                // Safety timeout: if the request hangs (network issue, FormSubmit.co
+                // down, etc.), re-enable the button after 15 seconds so user can retry.
+                // On successful submit, the page navigates to /thanks before this fires.
+                setTimeout(() => {
+                    if (btn && btn.disabled) {
+                        btn.disabled = false;
+                        btn.removeAttribute('aria-busy');
+                        if (txt) txt.textContent = originalText;
+                        // Soft alert via the form: scroll back, announce the issue
+                        const warning = document.createElement('p');
+                        warning.setAttribute('role', 'alert');
+                        warning.className = 'text-xs text-red-500 mt-3';
+                        warning.textContent = 'Request is taking longer than expected. Please try again or call (407) 883-7020.';
+                        if (btn.parentElement && !btn.parentElement.querySelector('[role="alert"]')) {
+                            btn.parentElement.appendChild(warning);
+                        }
+                    }
+                }, 15000);
             });
         }
 
