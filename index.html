@@ -1856,6 +1856,10 @@
                                 quoteFormEl.reset();
                                 try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e) {}
                                 notice.remove();
+                                // Move focus to the first form field so keyboard users
+                                // don't lose their place when the notice is removed
+                                const firstField = document.getElementById('q-name');
+                                if (firstField) firstField.focus();
                             });
                         }
                     }
