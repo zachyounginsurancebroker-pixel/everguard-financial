@@ -1767,6 +1767,26 @@
             s.src = 'https://assets.calendly.com/assets/external/widget.js';
             s.async = true;
             document.body.appendChild(s);
+
+            // If the widget doesn't render within 10s (blocked by ad-blocker, CSP,
+            // or Calendly being down), replace the loading spinner with a prominent
+            // "Book directly on Calendly" fallback link so users can still convert.
+            setTimeout(() => {
+                const hasIframe = calendlyContainer.querySelector('iframe');
+                const loader = document.getElementById('calendly-loading');
+                if (!hasIframe && loader) {
+                    loader.innerHTML =
+                        '<div class="text-center px-6">' +
+                        '<i class="fas fa-exclamation-triangle text-amber-500 text-2xl mb-3" aria-hidden="true"></i>' +
+                        '<p class="text-sm font-semibold text-brand-800 mb-2">Scheduler didn\'t load</p>' +
+                        '<p class="text-xs text-gray-500 mb-4">Ad-blocker or connection issue detected.</p>' +
+                        '<a href="https://calendly.com/zachyounginsurancebroker/customer-service-1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">' +
+                        '<i class="fas fa-calendar-check" aria-hidden="true"></i> Book on Calendly' +
+                        '</a>' +
+                        '<p class="text-xs text-gray-400 mt-4">Or call <a href="tel:+14078837020" class="text-brand-500 underline">(407) 883-7020</a></p>' +
+                        '</div>';
+                }
+            }, 10000);
         };
         if (calendlyContainer) {
             // Primary path: IntersectionObserver triggers when user scrolls near booking section
