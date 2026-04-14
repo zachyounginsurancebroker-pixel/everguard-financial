@@ -1858,16 +1858,28 @@
                             const notice = document.createElement('p');
                             notice.setAttribute('role', 'status');
                             notice.className = 'text-xs text-gray-500 italic mb-3 flex items-center gap-1.5';
-                            notice.innerHTML = '<i class="fas fa-history text-brand-500" aria-hidden="true"></i> Your previous draft was restored. <button type="button" class="text-brand-500 underline hover:text-brand-600 ml-1">Start fresh</button>';
+                            notice.innerHTML =
+                                '<i class="fas fa-history text-brand-500" aria-hidden="true"></i>' +
+                                '<span>Your previous draft was restored.</span>' +
+                                '<button type="button" data-action="fresh" class="text-brand-500 underline hover:text-brand-600 ml-1">Start fresh</button>' +
+                                '<button type="button" data-action="dismiss" aria-label="Dismiss this notice" class="ml-auto text-gray-400 hover:text-gray-600 px-2 py-0.5 rounded">×</button>';
                             quoteFormEl.insertBefore(notice, quoteFormEl.firstChild);
-                            notice.querySelector('button').addEventListener('click', () => {
+                            notice.querySelector('[data-action="fresh"]').addEventListener('click', () => {
                                 quoteFormEl.reset();
                                 try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e) {}
                                 notice.remove();
                                 // Move focus to the first form field so keyboard users
                                 // don't lose their place when the notice is removed
                                 const firstField = document.getElementById('q-name');
-                                if (firstField) firstField.focus();
+                                if (firstField) firstField.focus({ preventScroll: true });
+                            });
+                            notice.querySelector('[data-action="dismiss"]').addEventListener('click', () => {
+                                // User dismisses the notice but KEEPS the restored draft
+                                notice.remove();
+                                // Move focus to first empty field so they can continue
+                                const fields = quoteFormFields.map(n => quoteFormEl.querySelector('[name="' + n + '"]'));
+                                const nextEmpty = fields.find(f => f && !f.value) || fields[0];
+                                if (nextEmpty) nextEmpty.focus({ preventScroll: true });
                             });
                         }
                     }
