@@ -302,8 +302,10 @@
         }
     </script>
 
-    <!-- Preload the hero image (LCP) for fastest paint — WebP for supported browsers -->
-    <link rel="preload" as="image" href="assets/hero-couple-beach.webp" type="image/webp" fetchpriority="high">
+    <!-- Preload the hero image (LCP) — responsive srcset matches viewport size -->
+    <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+          imagesrcset="assets/hero-couple-beach-small.webp 750w, assets/hero-couple-beach-medium.webp 1200w, assets/hero-couple-beach.webp 1376w"
+          imagesizes="100vw">
     <link rel="preload" as="image" href="assets/hero-couple-beach.jpg" fetchpriority="high" media="(prefers-reduced-data: reduce)">
 
     <!-- Prefetch /thanks — loads instantly after Quick Quote form submit -->
