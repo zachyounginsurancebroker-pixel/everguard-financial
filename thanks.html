@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanks! — EverGuard Financial</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://everguard-financial.vercel.app/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 500: '#1a73e8', 600: '#1557b0', 800: '#1e293b', 900: '#0f172a' }, success: '#16a34a' }, fontFamily: { heading: ['Outfit', 'sans-serif'], body: ['Inter', 'sans-serif'] } } } }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+body { font-family: 'Inter', sans-serif; }
+h1 { font-family: 'Outfit', sans-serif; }
+.gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a73e8 100%); }
+@keyframes check-pop { 0% { transform: scale(0); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
+.check-pop { animation: check-pop 0.5s ease-out; }
+</style>
+</head>
+<body class="min-h-screen gradient-bg text-white antialiased flex items-center justify-center p-4">
+<div class="max-w-xl mx-auto text-center">
+<div class="check-pop inline-flex items-center justify-center w-20 h-20 bg-success rounded-full mb-6 shadow-lg">
+<i class="fas fa-check text-white text-4xl"></i>
+</div>
+<div class="text-sm font-semibold text-blue-200/70 uppercase tracking-widest mb-3">Message Received</div>
+<h1 class="text-4xl sm:text-5xl font-bold mb-4">Thanks for reaching out!</h1>
+<p class="text-blue-100/80 text-lg mb-10 leading-relaxed">
+I'll review your request and email you back within 24 hours with a personalized quote. If you need anything sooner, just call or text me directly.
+</p>
+
+<div class="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center mb-8">
+<a href="tel:+14078837020" class="inline-flex items-center justify-center gap-2 bg-white text-brand-800 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition-all shadow-lg">
+<i class="fas fa-phone-alt"></i> (407) 883-7020
+</a>
+<a href="sms:+14078837020" class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg">
+<i class="fas fa-comment-dots"></i> Text Me
+</a>
+</div>
+
+<a href="/" class="text-blue-200/60 hover:text-white text-sm transition-colors">← Back to Home</a>
+</div>
+</body>
+</html>
