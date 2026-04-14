@@ -1,0 +1,18 @@
+# RFC 9116 security.txt for EverGuard Financial
+# https://www.rfc-editor.org/rfc/rfc9116
+
+Contact: mailto:zachyounginsurancebroker@gmail.com
+Contact: tel:+1-407-883-7020
+Expires: 2027-04-14T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://everguard-financial.vercel.app/.well-known/security.txt
+
+# Reporting:
+# If you've identified a security vulnerability or privacy concern with
+# everguard-financial.vercel.app, please contact Zach Young directly via
+# email or phone above. Include reproduction steps and your contact info
+# for follow-up.
+#
+# This site is a static marketing site for an insurance professional and
+# does not handle payments, accounts, or sensitive data beyond standard
+# contact form submissions (which are processed by FormSubmit.co).
