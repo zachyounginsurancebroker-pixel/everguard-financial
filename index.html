@@ -1350,7 +1350,12 @@
                     </address>
                 </div>
 
-                <!-- Right: Calendly Booking Widget (lazy-loaded when user scrolls near it) -->
+                <!-- Right: Calendly Booking Widget (lazy-loaded when user scrolls near it)
+                     ⚠️ If updating the Calendly URL, change it in 3 places within this block:
+                     1. The data-url attribute below (canonical source)
+                     2. The <a href> in the #calendly-loading spinner fallback
+                     3. The <a href> in the <noscript> fallback
+                     The JS 10s timeout fallback reads from data-url, no update needed there. -->
                 <div class="lg:col-span-3">
                     <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden">
                         <div id="calendly-container" class="calendly-inline-widget" data-url="https://calendly.com/zachyounginsurancebroker/customer-service-1" style="min-width:320px;height:700px;" aria-label="Calendly booking widget">
@@ -1771,16 +1776,18 @@
             // If the widget doesn't render within 10s (blocked by ad-blocker, CSP,
             // or Calendly being down), replace the loading spinner with a prominent
             // "Book directly on Calendly" fallback link so users can still convert.
+            // URL is read from data-url so there's a single source of truth.
             setTimeout(() => {
                 const hasIframe = calendlyContainer.querySelector('iframe');
                 const loader = document.getElementById('calendly-loading');
                 if (!hasIframe && loader) {
+                    const directUrl = calendlyContainer.dataset.url || '#book';
                     loader.innerHTML =
                         '<div class="text-center px-6">' +
                         '<i class="fas fa-exclamation-triangle text-amber-500 text-2xl mb-3" aria-hidden="true"></i>' +
                         '<p class="text-sm font-semibold text-brand-800 mb-2">Scheduler didn\'t load</p>' +
                         '<p class="text-xs text-gray-500 mb-4">Ad-blocker or connection issue detected.</p>' +
-                        '<a href="https://calendly.com/zachyounginsurancebroker/customer-service-1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">' +
+                        '<a href="' + directUrl + '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-3 rounded-xl transition-all text-sm">' +
                         '<i class="fas fa-calendar-check" aria-hidden="true"></i> Book on Calendly' +
                         '</a>' +
                         '<p class="text-xs text-gray-400 mt-4">Or call <a href="tel:+14078837020" class="text-brand-500 underline">(407) 883-7020</a></p>' +
