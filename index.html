@@ -342,6 +342,17 @@
             padding-bottom: 1.25rem !important;
         }
 
+        /* Safe-area support for notched iPhones (viewport-fit=cover) */
+        .safe-bottom {
+            bottom: calc(1rem + env(safe-area-inset-bottom));
+        }
+        .safe-left {
+            left: calc(1rem + env(safe-area-inset-left));
+        }
+        .safe-right {
+            right: calc(1rem + env(safe-area-inset-right));
+        }
+
         /* Testimonial cards */
         .testimonial-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1372,7 +1383,7 @@
     <!-- FLOATING CTAs (Book + WhatsApp)              -->
     <!-- ============================================ -->
     <!-- Mobile: Book button (bottom-right) -->
-    <div id="floating-cta" class="floating-cta hidden fixed bottom-4 right-4 z-40 lg:hidden">
+    <div id="floating-cta" class="floating-cta hidden fixed safe-bottom safe-right z-40 lg:hidden">
         <a href="#book" class="flex items-center gap-2 bg-brand-500 text-white font-semibold text-sm px-4 py-3 rounded-full shadow-lg shadow-brand-500/30 hover:bg-brand-600 transition-all">
             <i class="fas fa-calendar-check text-sm" aria-hidden="true"></i>
             <span>Book</span>
@@ -1380,7 +1391,7 @@
     </div>
 
     <!-- WhatsApp/Text chat button (always visible, bottom-left) -->
-    <div class="fixed bottom-4 left-4 z-40">
+    <div class="fixed safe-bottom safe-left z-40">
         <a href="sms:+14078837020?body=Hi%20Zach%2C%20I%20have%20a%20question%20about%20insurance."
             aria-label="Send Zach a text message"
             class="flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-sm px-4 py-3 rounded-full shadow-lg shadow-black/20 transition-all">
