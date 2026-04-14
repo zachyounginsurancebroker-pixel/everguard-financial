@@ -1682,25 +1682,60 @@
             });
         });
 
-        // ---- Copy Referral Link ----
+        // ---- Copy Referral Link (with legacy fallback + error handling) ----
         function copyReferralLink() {
             const link = document.getElementById('referral-link');
             const btn = document.getElementById('copy-link-btn');
             const feedback = document.getElementById('copy-feedback');
 
-            navigator.clipboard.writeText(link.value).then(() => {
+            const showSuccess = () => {
                 btn.innerHTML = '<i class="fas fa-check text-sm" aria-hidden="true"></i><span>Copied!</span>';
                 btn.classList.add('copy-success', 'bg-success');
                 btn.classList.remove('bg-brand-500');
+                feedback.textContent = 'Link copied to clipboard!';
                 feedback.style.opacity = '1';
-
+                feedback.classList.remove('text-red-400');
+                feedback.classList.add('text-success');
                 setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-copy text-sm" aria-hidden="true"></i><span>Copy</span>';
+                    btn.innerHTML = '<i class="fas fa-copy text-sm" aria-hidden="true"></i><span>Copy Link</span>';
                     btn.classList.remove('copy-success', 'bg-success');
                     btn.classList.add('bg-brand-500');
                     feedback.style.opacity = '0';
                 }, 2000);
-            });
+            };
+
+            const showError = () => {
+                feedback.textContent = 'Tap the link above, then long-press to copy manually.';
+                feedback.style.opacity = '1';
+                feedback.classList.remove('text-success');
+                feedback.classList.add('text-red-400');
+                // Focus + select the input so user can manually copy
+                link.focus();
+                link.select();
+            };
+
+            // Primary: modern Clipboard API (requires HTTPS)
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(link.value).then(showSuccess).catch(() => {
+                    // Fall through to legacy method
+                    legacyCopy();
+                });
+            } else {
+                legacyCopy();
+            }
+
+            // Fallback: document.execCommand (deprecated but widely supported)
+            function legacyCopy() {
+                try {
+                    link.focus();
+                    link.select();
+                    link.setSelectionRange(0, 99999); // Mobile Safari
+                    const ok = document.execCommand('copy');
+                    ok ? showSuccess() : showError();
+                } catch (e) {
+                    showError();
+                }
+            }
         }
 
         // ---- Lazy-load Calendly widget (with fallback to ensure it always loads) ----
