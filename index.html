@@ -1812,28 +1812,41 @@
         }
 
         // ---- Form auto-save (localStorage) — preserve partial input across refreshes ----
+        // TTL: drafts older than 7 days auto-expire (privacy defense on shared devices)
         const FORM_STORAGE_KEY = 'eg-quote-form-draft';
+        const FORM_STORAGE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
         const quoteFormFields = ['name', 'email', 'phone', 'insurance_type', 'message'];
         const quoteFormEl = document.getElementById('quote-form');
 
         if (quoteFormEl && 'localStorage' in window) {
-            // Restore on page load
+            // Restore on page load (only if draft is fresh, < 7 days old)
             try {
-                const saved = JSON.parse(localStorage.getItem(FORM_STORAGE_KEY) || '{}');
-                quoteFormFields.forEach(name => {
-                    if (saved[name]) {
-                        const field = quoteFormEl.querySelector('[name="' + name + '"]');
-                        if (field) field.value = saved[name];
+                const raw = localStorage.getItem(FORM_STORAGE_KEY);
+                if (raw) {
+                    const saved = JSON.parse(raw);
+                    const isExpired = !saved._savedAt || (Date.now() - saved._savedAt > FORM_STORAGE_TTL_MS);
+                    if (isExpired) {
+                        localStorage.removeItem(FORM_STORAGE_KEY);
+                    } else {
+                        quoteFormFields.forEach(name => {
+                            if (saved[name]) {
+                                const field = quoteFormEl.querySelector('[name="' + name + '"]');
+                                if (field) field.value = saved[name];
+                            }
+                        });
                     }
-                });
-            } catch (e) { /* Corrupted storage — ignore */ }
+                }
+            } catch (e) {
+                // Corrupted storage — clear it to prevent future errors
+                try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e2) {}
+            }
 
-            // Save on input (debounced)
+            // Save on input (debounced 500ms)
             let saveTimer;
             quoteFormEl.addEventListener('input', () => {
                 clearTimeout(saveTimer);
                 saveTimer = setTimeout(() => {
-                    const data = {};
+                    const data = { _savedAt: Date.now() };
                     quoteFormFields.forEach(name => {
                         const field = quoteFormEl.querySelector('[name="' + name + '"]');
                         if (field && field.value) data[name] = field.value;
