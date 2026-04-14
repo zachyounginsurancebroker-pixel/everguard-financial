@@ -27,6 +27,15 @@ h1 { font-family: 'Outfit', sans-serif; }
 @media (prefers-reduced-motion: reduce) {
   .check-pop { animation: none !important; }
 }
+
+*:focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+@media (forced-colors: active) {
+  *:focus-visible { outline: 3px solid Highlight !important; outline-offset: 2px !important; }
+  a { color: LinkText; }
+}
 </style>
 </head>
 <body class="min-h-screen gradient-bg text-white antialiased flex items-center justify-center p-4">
