@@ -622,9 +622,13 @@
     <!-- ============================================ -->
     <main id="main-content" tabindex="-1">
     <section class="bg-brand-900 relative overflow-hidden pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <!-- Background image (WebP for modern browsers, JPEG fallback) -->
+        <!-- Background image (WebP for modern browsers, JPEG fallback) — responsive srcset -->
         <picture class="absolute inset-0 w-full h-full">
-            <source srcset="assets/hero-couple-beach.webp" type="image/webp">
+            <source type="image/webp"
+                    srcset="assets/hero-couple-beach-small.webp 750w,
+                            assets/hero-couple-beach-medium.webp 1200w,
+                            assets/hero-couple-beach.webp 1376w"
+                    sizes="100vw">
             <img src="assets/hero-couple-beach.jpg" alt="Mature couple walking hand-in-hand on the beach at sunset — the peaceful retirement that life insurance, health coverage, and annuities help families protect." width="1376" height="768" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover">
         </picture>
         <!-- Dark gradient overlay for text readability -->
