@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-US" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1058,7 +1058,9 @@
             <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 max-w-lg mx-auto mb-8 border border-white/10">
                 <p class="text-white/70 text-sm font-medium mb-3">Your Personal Referral Link:</p>
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                    <label for="referral-link" class="sr-only">Your personal referral link</label>
                     <input id="referral-link" type="text" value="https://everguard-financial.vercel.app/?ref=client" readonly
+                        aria-label="Your personal referral link"
                         class="flex-1 min-w-0 bg-white/10 text-white font-mono text-xs sm:text-sm px-4 py-3 rounded-xl border border-white/10 focus:outline-none truncate">
                     <button id="copy-link-btn" onclick="copyReferralLink()" class="bg-brand-500 hover:bg-brand-400 text-white font-semibold px-5 py-3 rounded-xl transition-all flex items-center justify-center gap-2 whitespace-nowrap">
                         <i class="fas fa-copy text-sm"></i>
@@ -1212,8 +1214,8 @@
         <div class="exit-overlay absolute inset-0 bg-black/60" onclick="closeExitPopup()"></div>
         <div class="relative flex items-center justify-center min-h-screen p-4">
             <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative transform scale-95 opacity-0 transition-all duration-300" id="exit-popup-content">
-                <button onclick="closeExitPopup()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
-                    <i class="fas fa-times text-lg"></i>
+                <button onclick="closeExitPopup()" aria-label="Close popup" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="fas fa-times text-lg" aria-hidden="true"></i>
                 </button>
 
                 <div class="text-center">
