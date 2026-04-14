@@ -1898,6 +1898,13 @@
                 const icon = document.getElementById('quote-submit-icon');
                 const originalText = txt ? txt.textContent : 'Send My Quote Request';
                 const originalIconClass = icon ? icon.className : '';
+
+                // Clear any stale error from a previous failed attempt
+                if (btn && btn.parentElement) {
+                    const staleAlert = btn.parentElement.querySelector('[role="alert"]');
+                    if (staleAlert) staleAlert.remove();
+                }
+
                 if (btn) {
                     btn.disabled = true;
                     btn.setAttribute('aria-busy', 'true');
