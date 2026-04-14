@@ -5,6 +5,8 @@ Disallow: /404
 Disallow: /*?ref=
 Disallow: /*?v=
 Disallow: /*?bust=
+# Politeness — be gentle with the Vercel free tier
+Crawl-delay: 2
 
 # Explicitly allow social media scrapers (redundant but explicit)
 User-agent: facebookexternalhit
