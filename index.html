@@ -1796,12 +1796,15 @@
             cta.addEventListener('click', () => {
                 const value = cta.dataset.preselect;
                 const select = document.getElementById('q-type');
-                if (select) {
-                    select.value = value;
-                    // Brief highlight so user notices the pre-selection
-                    select.classList.add('ring-2', 'ring-brand-500');
-                    setTimeout(() => select.classList.remove('ring-2', 'ring-brand-500'), 1500);
-                }
+                if (!select) return;
+                select.value = value;
+                // Dispatch 'change' event so any form validators / analytics listeners fire
+                select.dispatchEvent(new Event('change', { bubbles: true }));
+                // Brief visual highlight for sighted users
+                select.classList.add('ring-2', 'ring-brand-500');
+                setTimeout(() => select.classList.remove('ring-2', 'ring-brand-500'), 1500);
+                // Screen reader users: when they Tab to the select, they'll hear the
+                // current value ("Annuities, combobox") — native behavior is sufficient
             });
         });
 
