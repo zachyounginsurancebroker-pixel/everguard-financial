@@ -6,8 +6,8 @@
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
         { "key": "X-Robots-Tag", "value": "index, follow" },
         { "key": "Content-Type", "value": "text/html; charset=utf-8" },
-        { "key": "Content-Disposition", "value": "" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Link", "value": "<https://everguard-financial.vercel.app/assets/og-image.jpg>; rel=\"preload\"; as=\"image\", <https://everguard-financial.vercel.app/assets/og-image.jpg>; rel=\"image_src\"" }
       ]
     },
     {
