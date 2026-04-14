@@ -1271,7 +1271,7 @@
 
                 <button id="quote-submit" type="submit"
                         class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 disabled:bg-brand-400 disabled:cursor-not-allowed text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-brand-500/20 text-base">
-                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    <i id="quote-submit-icon" class="fas fa-paper-plane" aria-hidden="true"></i>
                     <span id="quote-submit-text">Send My Quote Request</span>
                 </button>
                 <p class="text-xs text-gray-500 mt-3 flex items-center gap-1.5">
@@ -1797,12 +1797,16 @@
             quoteForm.addEventListener('submit', () => {
                 const btn = document.getElementById('quote-submit');
                 const txt = document.getElementById('quote-submit-text');
+                const icon = document.getElementById('quote-submit-icon');
                 const originalText = txt ? txt.textContent : 'Send My Quote Request';
+                const originalIconClass = icon ? icon.className : '';
                 if (btn) {
                     btn.disabled = true;
                     btn.setAttribute('aria-busy', 'true');
                 }
                 if (txt) txt.textContent = 'Sending…';
+                // Swap paper-plane icon for a spinner
+                if (icon) icon.className = 'fas fa-circle-notch fa-spin';
 
                 // Safety timeout: if the request hangs (network issue, FormSubmit.co
                 // down, etc.), re-enable the button after 15 seconds so user can retry.
@@ -1812,6 +1816,7 @@
                         btn.disabled = false;
                         btn.removeAttribute('aria-busy');
                         if (txt) txt.textContent = originalText;
+                        if (icon) icon.className = originalIconClass;
                         // Soft alert via the form: scroll back, announce the issue
                         const warning = document.createElement('p');
                         warning.setAttribute('role', 'alert');
