@@ -205,6 +205,13 @@
     <!-- Preload the hero image (LCP) for fastest paint -->
     <link rel="preload" as="image" href="assets/hero-couple-beach.jpg" fetchpriority="high">
 
+    <!-- DNS prefetch + preconnect for all external CDNs (parallel DNS/TLS with HTML parsing) -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+    <link rel="dns-prefetch" href="https://calendly.com">
+    <link rel="dns-prefetch" href="https://formsubmit.co">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -380,11 +387,6 @@
         .navbar-scrolled {
             background: rgba(255, 255, 255, 0.98) !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Stat counter */
-        .stat-number {
-            font-variant-numeric: tabular-nums;
         }
 
         /* Exit intent overlay */
@@ -1581,31 +1583,6 @@
             setTimeout(() => exitPopup.classList.add('hidden'), 300);
         }
 
-        // ---- Stat Counter Animation ----
-        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.dataset.target);
-                    const suffix = el.dataset.suffix || '';
-                    let current = 0;
-                    const increment = target / 40;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            el.textContent = target + suffix;
-                            clearInterval(timer);
-                        } else {
-                            el.textContent = Math.floor(current) + suffix;
-                        }
-                    }, 30);
-                    statObserver.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statNumbers.forEach(el => statObserver.observe(el));
     </script>
 
     <!--
