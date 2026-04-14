@@ -376,6 +376,28 @@
             }
         }
 
+        /* Windows High Contrast Mode (forced-colors) support */
+        @media (forced-colors: active) {
+            /* Ensure buttons have visible borders in HCM */
+            button, a.inline-flex, [role="button"] {
+                border: 1px solid ButtonText;
+            }
+            /* Preserve icon visibility — SVG currentColor respects HCM */
+            .stars, i[class*="fa-"] {
+                forced-color-adjust: auto;
+            }
+            /* Make sure focus is obvious in HCM */
+            *:focus-visible {
+                outline: 3px solid Highlight !important;
+                outline-offset: 2px !important;
+            }
+            /* Hero gradient overlay — ensure text stays readable */
+            .hero-gradient, [class*="bg-gradient"] {
+                background: Canvas !important;
+                color: CanvasText !important;
+            }
+        }
+
         /* Print styles — clean output if anyone prints */
         @media print {
             .floating-cta, #floating-cta, #exit-popup,
