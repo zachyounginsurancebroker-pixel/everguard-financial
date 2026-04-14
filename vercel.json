@@ -1,4 +1,9 @@
 {
+  "rewrites": [
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/disclosures", "destination": "/disclosures.html" }
+  ],
   "headers": [
     {
       "source": "/",
