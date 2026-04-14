@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<script>document.documentElement.classList.replace('no-js', 'js')</script>
+<script>document.documentElement.classList.replace('no-js', 'js');document.addEventListener('DOMContentLoaded',()=>{var y=document.getElementById('copyright-year');if(y)y.textContent=new Date().getFullYear();});</script>
 <title>EverGuard Financial | Protecting What Matters Most</title>
 <meta property="og:image" content="https://everguard-financial.vercel.app/assets/og-image.jpg">
 <meta property="og:title" content="EverGuard Financial | Protecting What Matters Most">
@@ -1543,7 +1543,7 @@
             <!-- Bottom Bar -->
             <div class="border-t border-white/10 pt-8">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p class="text-blue-200/40 text-xs">&copy; 2026 EverGuard Financial. All rights reserved.</p>
+                    <p class="text-blue-200/40 text-xs">&copy; <span id="copyright-year">2026</span> EverGuard Financial. All rights reserved.</p>
                     <div class="flex gap-6">
                         <a href="/privacy" class="text-blue-200/40 hover:text-white text-xs transition-colors">Privacy Policy</a>
                         <a href="/terms" class="text-blue-200/40 hover:text-white text-xs transition-colors">Terms of Service</a>
