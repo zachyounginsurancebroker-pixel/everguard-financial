@@ -1835,12 +1835,29 @@
                     if (isExpired) {
                         localStorage.removeItem(FORM_STORAGE_KEY);
                     } else {
+                        let restoredAny = false;
                         quoteFormFields.forEach(name => {
                             if (saved[name]) {
                                 const field = quoteFormEl.querySelector('[name="' + name + '"]');
-                                if (field) field.value = saved[name];
+                                if (field) {
+                                    field.value = saved[name];
+                                    restoredAny = true;
+                                }
                             }
                         });
+                        // Show a subtle "Draft restored" notice so user knows why form is pre-filled
+                        if (restoredAny) {
+                            const notice = document.createElement('p');
+                            notice.setAttribute('role', 'status');
+                            notice.className = 'text-xs text-gray-500 italic mb-3 flex items-center gap-1.5';
+                            notice.innerHTML = '<i class="fas fa-history text-brand-500" aria-hidden="true"></i> Your previous draft was restored. <button type="button" class="text-brand-500 underline hover:text-brand-600 ml-1">Start fresh</button>';
+                            quoteFormEl.insertBefore(notice, quoteFormEl.firstChild);
+                            notice.querySelector('button').addEventListener('click', () => {
+                                quoteFormEl.reset();
+                                try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e) {}
+                                notice.remove();
+                            });
+                        }
                     }
                 }
             } catch (e) {
