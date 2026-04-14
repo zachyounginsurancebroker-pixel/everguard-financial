@@ -30,6 +30,9 @@
 }
 </script>
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: { brand: { 50: '#eff6ff', 500: '#1a73e8', 600: '#1557b0', 700: '#1e3a5f', 800: '#1e293b', 900: '#0f172a' } }, fontFamily: { heading: ['Outfit', 'sans-serif'], body: ['Inter', 'sans-serif'] } } } }
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 body { font-family: 'Inter', sans-serif; }
@@ -40,14 +43,14 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 <header class="border-b border-gray-100 py-4">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2.5">
 <a href="/" class="flex items-center gap-2.5" aria-label="EverGuard Financial — Home">
-<svg width="36" height="36" class="w-9 h-9 text-[#1a73e8]" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" fill="currentColor" opacity="0.12"/><path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" stroke="currentColor" stroke-width="2.5"/><path d="M17 24L22 29L31 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-<div class="flex flex-col"><span class="font-bold text-slate-800 text-lg leading-tight">EverGuard</span><span class="text-[10px] text-[#1a73e8] font-medium tracking-widest uppercase -mt-0.5">Financial</span></div>
+<svg width="36" height="36" class="w-9 h-9 text-brand-500" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" fill="currentColor" opacity="0.12"/><path d="M24 4L6 14V26C6 36.5 14 44 24 46C34 44 42 36.5 42 26V14L24 4Z" stroke="currentColor" stroke-width="2.5"/><path d="M17 24L22 29L31 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+<div class="flex flex-col"><span class="font-bold text-slate-800 text-lg leading-tight">EverGuard</span><span class="text-[10px] text-brand-500 font-medium tracking-widest uppercase -mt-0.5">Financial</span></div>
 </a>
 </div>
 </header>
 
 <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-<a href="/" class="text-[#1a73e8] text-sm font-medium hover:underline inline-flex items-center gap-1 mb-8">← Back to Home</a>
+<a href="/" class="text-brand-500 text-sm font-medium hover:underline inline-flex items-center gap-1 mb-8">← Back to Home</a>
 <h1 class="text-3xl lg:text-4xl font-bold text-slate-800 mb-4">Disclosures</h1>
 <p class="text-sm text-gray-500 mb-8">Last updated: <time datetime="2026-04">April 2026</time></p>
 
@@ -69,7 +72,7 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 <p>Insurance guarantees (such as death benefits or annuity payouts) are subject to the claims-paying ability and financial strength of the issuing insurance company.</p>
 
 <h2 class="text-xl font-bold text-slate-800 pt-4">Contact for Verification</h2>
-<p>To verify licensing status or request specific disclosures, contact Zach Young at <a href="mailto:zachyounginsurancebroker@gmail.com" class="text-[#1a73e8] hover:underline">zachyounginsurancebroker@gmail.com</a> or <a href="tel:+14078837020" class="text-[#1a73e8] hover:underline">(407) 883-7020</a>.</p>
+<p>To verify licensing status or request specific disclosures, contact Zach Young at <a href="mailto:zachyounginsurancebroker@gmail.com" class="text-brand-500 hover:underline">zachyounginsurancebroker@gmail.com</a> or <a href="tel:+14078837020" class="text-brand-500 hover:underline">(407) 883-7020</a>.</p>
 
 <div class="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-900">
 <strong>Compliance Note:</strong> Insurance regulations vary by state. Before going fully public, review these disclosures with your state insurance department or compliance professional to ensure they meet local requirements (e.g., state-specific producer disclosure rules, fiduciary/suitability language where applicable).
