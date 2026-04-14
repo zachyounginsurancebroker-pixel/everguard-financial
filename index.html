@@ -101,6 +101,31 @@
     }
     </script>
 
+    <!-- JSON-LD: Person (Zach Young — builds Google knowledge panel association) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Zach Young",
+      "jobTitle": "Licensed Insurance Agent",
+      "worksFor": {
+        "@type": "InsuranceAgency",
+        "name": "EverGuard Financial",
+        "url": "https://everguard-financial.vercel.app/"
+      },
+      "telephone": "+1-407-883-7020",
+      "email": "zachyounginsurancebroker@gmail.com",
+      "url": "https://everguard-financial.vercel.app/#about",
+      "image": "https://everguard-financial.vercel.app/assets/zach-speaking.webp",
+      "knowsAbout": ["Life Insurance", "Health Insurance", "Annuities", "Retirement Planning"],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "name": "Licensed Life Insurance Agent" },
+        { "@type": "EducationalOccupationalCredential", "name": "Licensed Health Insurance Agent" },
+        { "@type": "EducationalOccupationalCredential", "name": "Licensed Annuity Agent" }
+      ]
+    }
+    </script>
+
     <!-- JSON-LD: FAQPage (enables rich FAQ snippets in Google search results) -->
     <script type="application/ld+json">
     {
@@ -1079,7 +1104,7 @@
                 </p>
             </div>
 
-            <form action="https://formsubmit.co/zachyounginsurancebroker@gmail.com" method="POST"
+            <form id="quote-form" action="https://formsubmit.co/zachyounginsurancebroker@gmail.com" method="POST"
                   class="bg-white rounded-2xl shadow-xl border border-brand-100 p-6 lg:p-8 reveal">
                 <!-- FormSubmit.co config -->
                 <input type="hidden" name="_subject" value="New Quote Request from EverGuard Website">
@@ -1127,10 +1152,10 @@
                               placeholder="E.g., 'I'm a 35-year-old parent looking for life insurance to cover my family.'"></textarea>
                 </div>
 
-                <button type="submit"
-                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-brand-500/20 text-base">
+                <button id="quote-submit" type="submit"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 disabled:bg-brand-400 disabled:cursor-not-allowed text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-brand-500/20 text-base">
                     <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                    Send My Quote Request
+                    <span id="quote-submit-text">Send My Quote Request</span>
                 </button>
                 <p class="text-xs text-gray-500 mt-3 flex items-center gap-1.5">
                     <i class="fas fa-lock text-brand-500" aria-hidden="true"></i>
@@ -1539,6 +1564,20 @@
                     btn.classList.add('bg-brand-500');
                     feedback.style.opacity = '0';
                 }, 2000);
+            });
+        }
+
+        // ---- Prevent double-submit on Quick Quote form ----
+        const quoteForm = document.getElementById('quote-form');
+        if (quoteForm) {
+            quoteForm.addEventListener('submit', () => {
+                const btn = document.getElementById('quote-submit');
+                const txt = document.getElementById('quote-submit-text');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.setAttribute('aria-busy', 'true');
+                }
+                if (txt) txt.textContent = 'Sending…';
             });
         }
 
