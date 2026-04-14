@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://everguard-financial.vercel.app/</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -11,5 +11,23 @@
       <image:title>EverGuard Financial - Protecting What Matters Most</image:title>
       <image:caption>Licensed Life, Health &amp; Annuity Specialist</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://everguard-financial.vercel.app/privacy</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://everguard-financial.vercel.app/terms</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://everguard-financial.vercel.app/disclosures</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
