@@ -1842,11 +1842,10 @@
                 }, 500);
             });
 
-            // Clear on successful submit (the page navigates to /thanks, but in case
-            // of back-button: we don't want to accidentally resurrect the already-sent form)
-            quoteFormEl.addEventListener('submit', () => {
-                try { localStorage.removeItem(FORM_STORAGE_KEY); } catch (e) {}
-            });
+            // Don't clear draft on submit — if submission fails (network error,
+            // timeout, FormSubmit down), user would lose their typed data.
+            // Draft is cleared on /thanks page (see thanks.html inline script)
+            // which only runs on SUCCESSFUL form submission.
         }
 
         // ---- Service-card CTAs pre-select insurance type in Quick Quote form ----
